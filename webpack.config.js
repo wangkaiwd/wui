@@ -1,3 +1,4 @@
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
 const absPath = dir => path.resolve(__dirname, `./${dir}`);
 module.exports = {
@@ -27,4 +28,10 @@ module.exports = {
   devServer: {
     contentBase: './dist/lib'
   },
+  plugins: [
+    new HtmlWebpackPlugin({
+      title: 'WUI',
+      template: 'index.html'
+    }),
+  ]
 };
