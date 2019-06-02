@@ -1,0 +1,15 @@
+{
+  "name": "xxx-ui",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:wangkaiwd/xxx-ui.git",
+  "author": "wangkaiwd <1162486176@qq.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "webpack": "^4.32.2",
+    "webpack-cli": "^3.3.2"
+  },
+  "dependencies": {
+    "awesome-typescript-loader": "^5.2.1"
+  }
+}
