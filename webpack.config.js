@@ -33,5 +33,8 @@ module.exports = {
       title: 'WUI',
       template: 'index.html'
     }),
-  ]
+  ],
+  performance: {
+    hints: false
+  }
 };
