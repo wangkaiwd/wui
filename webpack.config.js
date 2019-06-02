@@ -25,6 +25,9 @@ module.exports = {
       }
     ]
   },
+  resolve: {
+    extensions: ['.js', '.json', '.ts', '.tsx']
+  },
   devServer: {
     contentBase: './dist/lib'
   },

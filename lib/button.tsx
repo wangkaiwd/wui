@@ -1,10 +1,10 @@
 import React from 'react';
 
-function Button(props) {
+function Button() {
   return (
-    <div>
+    <button>
       button
-    </div>
+    </button>
   );
 }
 
