@@ -1,6 +1,7 @@
 const path = require('path');
 const absPath = dir => path.resolve(__dirname, `./${dir}`);
 module.exports = {
+  mode: 'production',
   entry: {
     main: './lib/index.tsx'
   },
@@ -22,5 +23,8 @@ module.exports = {
         loader: 'awesome-typescript-loader'
       }
     ]
-  }
+  },
+  devServer: {
+    contentBase: './dist/lib'
+  },
 };
