@@ -21,6 +21,10 @@ module.exports = {
         // $ : 匹配输入的结束
         test: /\.tsx?$/,
         loader: 'awesome-typescript-loader'
+      },
+      {
+        test: /\.svg$/,
+        loader: 'svg-sprite-loader',
       }
     ]
   },
