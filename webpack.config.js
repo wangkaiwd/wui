@@ -1,8 +1,7 @@
-const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const absPath = dir => path.resolve(__dirname, `./${dir}`);
 module.exports = {
-  mode: 'production',
   entry: {
     main: './lib/index.tsx'
   },
@@ -25,35 +24,18 @@ module.exports = {
       }
     ]
   },
-  resolve: {
-    extensions: ['.js', '.json', '.ts', '.tsx']
-  },
-  devServer: {
-    contentBase: './dist/lib'
-  },
   plugins: [
     new HtmlWebpackPlugin({
       title: 'WUI',
       template: 'index.html'
     }),
   ],
-  // external: 外面的，外部的；表面上的
-  // 提供了从输出的bundle中排除依赖的方法。
-  // 官方文档： https://webpack.docschina.org/configuration/externals/#src/components/Sidebar/Sidebar.jsx
-  externals: {
-    react: {
-      commonjs: 'react',
-      commonjs2: 'react',
-      amd: 'react',
-      root: 'React'
-    },
-    'react-dom': {
-      commonjs: 'react-dom',
-      commonjs2: 'react-dom',
-      amd: 'react-dom',
-      root: 'ReactDOM',
-    }
-  }
+  resolve: {
+    extensions: ['.js', '.json', '.ts', '.tsx']
+  },
+  devServer: {
+    contentBase: './dist/lib'
+  },
   // performance: {
   //   hints: false
   // }
