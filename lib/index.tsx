@@ -1,6 +1,6 @@
 import React, {Fragment, MouseEventHandler} from 'react';
 import ReactDOM from 'react-dom';
-import Icon from './icon';
+import Icon from './icon/icon';
 
 const onClick: MouseEventHandler = (e) => {
   console.log('click', e.target);
