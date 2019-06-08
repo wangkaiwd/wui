@@ -1,7 +1,5 @@
 import React from 'react';
-import './assets/svgs/wechat.svg';
-import './assets/svgs/alipay.svg';
-import './assets/svgs/qq.svg';
+import './importAllSvg';
 
 interface IconProps {
   name: string
