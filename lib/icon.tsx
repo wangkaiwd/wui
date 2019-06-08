@@ -11,18 +11,18 @@ interface IconProps extends React.SVGAttributes<SVGElement> {
 // 展开属性: 这里的{}是用来识别js语法的，并不是代表对象。
 // {...props}: 表示执行{}中的js语法...props
 // 具体过程可以通过babel online：https://babeljs.io/repl/ 来进行编译尝试
-const Icon: React.FunctionComponent<IconProps> = (props) => {
-  const {className, ...restProps} = props;
-  return (
-    //这里的onClick是js原生的click方法，点击Icon组件，相当于点击组件的根节点，这里通过原生方法触发自定义方法
+const Icon: React.FunctionComponent<IconProps> =
+  ({className, name, ...restProps}) => {
+    return (
+      //这里的onClick是js原生的click方法，点击Icon组件，相当于点击组件的根节点，这里通过原生方法触发自定义方法
 
-    // 当Icon组件也传入className的时候，svg的className的值覆盖，而vue会将className用空格进行合并
-    <svg
-      className={classes('wui-icon', className)}
-      {...restProps}
-    >
-      <use xlinkHref={`#${props.name}`}/>
-    </svg>
-  );
-};
+      // 当Icon组件也传入className的时候，svg的className的值覆盖，而vue会将className用空格进行合并
+      <svg
+        className={classes('wui-icon', className)}
+        {...restProps}
+      >
+        <use xlinkHref={`#${name}`}/>
+      </svg>
+    );
+  };
 export default Icon;
