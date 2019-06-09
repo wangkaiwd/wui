@@ -3,7 +3,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const absPath = dir => path.resolve(__dirname, `./${dir}`);
 module.exports = {
   entry: {
-    main: './lib/index.tsx'
+    example: './lib/example.tsx'
   },
   output: {
     path: absPath('dist/lib'),
@@ -44,9 +44,6 @@ module.exports = {
   ],
   resolve: {
     extensions: ['.js', '.json', '.ts', '.tsx']
-  },
-  devServer: {
-    contentBase: './dist/lib'
   },
   // performance: {
   //   hints: false
