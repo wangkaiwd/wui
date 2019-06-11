@@ -14,6 +14,10 @@
   1. `interface extends React.SVGAttributes<SVGElement>`: 接口继承所有的`svg`原生属性
   2. `{...restProps}`来进行所有属性扩展： 注意这里的{}只是表示里边的内容是`js`语法，而并不是表示对象
   3. 定义`classes`函数来拼接传入的类名，实现`className`多类名书写
+### `Icon`组件测试
+* `importAllSvg`文件中使用`try catch`,因为文件中的代码在测试环境执行会报错(编写可测试的代码)
+* `jest`测试时，如果有非`js`文件，需要通过`moduleNameMapper`来进行配置对应得文件来进行`mock`,对应代码参考`test/__mocks__`目录下的文件
+* 生成测试快照，可以通过肉眼来观察生成的`DOM`结构是否符合要求，对于简单组件来说比较好用
 
 ### `React Class`书写方式
 * `constructor`的写法复习
