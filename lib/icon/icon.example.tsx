@@ -4,8 +4,8 @@ import Icon from './icon';
 const IconExample: React.FunctionComponent = (props) => {
   return (
     <div>
-      <Icon name={'alipay'}/>
-      <Icon name={'qq'}/>
+      <Icon name="alipay"/>
+      <Icon name="qq"/>
     </div>
   );
 };

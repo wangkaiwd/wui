@@ -3,4 +3,6 @@
   vertical-align: top;
   width: 1em;
   height: 1em;
+  // 加这行代码可以通过color来为icon设置颜色
+  fill: currentColor;
 }

@@ -1,24 +1,34 @@
 import React, {Fragment} from 'react';
+import {classMaker} from '../helpers/classes';
+import './dialog.scss';
+import Icon from '../icon/icon';
 
 interface DialogProps {
   visible: boolean,
   buttons?: Array<React.ReactElement>
 }
+const scopeClass = classMaker('dialog');
+const sc = scopeClass;
 const Dialog: React.FunctionComponent<DialogProps> = (props) => {
   const isShowFooter: boolean = (props.buttons && props.buttons.length > 0) ? true : false;
   return (
     <Fragment>
-      <div className="wui-dialog">
-        <header className="wui-dialog">title</header>
-        <main>content</main>
+      <div className={sc()}>
+        <div className={sc('close')}>
+          <Icon name="close"/>
+        </div>
+        <header className={sc('header')}>title</header>
+        <main className={sc('content')}>
+          {props.children}
+        </main>
         {isShowFooter &&
-        <footer>
+        <footer className={sc('footer')}>
           {props.buttons && props.buttons.map((button, i) =>
             React.cloneElement(button, {key: i})
           )}
         </footer>}
       </div>
-      <div className="wui-mask"></div>
+      <div className={sc('mask')}></div>
     </Fragment>
   );
 };
