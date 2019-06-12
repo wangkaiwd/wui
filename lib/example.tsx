@@ -3,6 +3,7 @@ import {HashRouter as Router, Link, Route} from 'react-router-dom';
 import ReactDOM from 'react-dom';
 import IconExample from './icon/icon.example';
 import Button from './button';
+import DialogExample from './dialog/dialog.example';
 
 const Example: React.FunctionComponent = (props) => {
   return (
@@ -24,6 +25,7 @@ const Example: React.FunctionComponent = (props) => {
         </aside>
         <main>
           <Route path={'/icon'} component={IconExample}/>
+          <Route path={'/dialog'} component={DialogExample}/>
           <Route path={'/button'} component={Button}/>
         </main>
       </div>
