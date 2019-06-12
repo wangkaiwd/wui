@@ -21,6 +21,9 @@ const Example: React.FunctionComponent = (props) => {
             <li>
               <Link to={'/button'}>button</Link>
             </li>
+            <li>
+              <Link to={'/dialog'}>dialog</Link>
+            </li>
           </ul>
         </aside>
         <main>
