@@ -19,6 +19,12 @@
 * `jest`测试时，如果有非`js`文件，需要通过`moduleNameMapper`来进行配置对应得文件来进行`mock`,对应代码参考`test/__mocks__`目录下的文件
 * 生成测试快照，可以通过肉眼来观察生成的`DOM`结构是否符合要求，对于简单组件来说比较好用
 
+### `Dialog`组件
+* `scopeClass`的封装思路
+* `close`中的`Icon`为什么会受到`line-height`的影响
+* 有些文件为什么要加`_`
+* 在出现模态框后并进行上下滑动，划出后会出现白色区域
+
 ### `React Class`书写方式
 * `constructor`的写法复习
 * 绑定事件时`this`指向修改：  
