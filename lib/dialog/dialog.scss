@@ -9,10 +9,20 @@
   transform: translate(-50%, -50%);
   border-radius: 4px;
   &-close {
-    border: 1px solid red;
     position: absolute;
     bottom: 100%;
     left: 100%;
+    width: 2em;
+    height: 2em;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: pink;
+    transform: translate(-50%, 50%);
+  }
+  &-close-icon {
+    font-size: 26px;
   }
   &-mask {
     position: fixed;
@@ -22,5 +32,4 @@
     bottom: 0;
     background-color: fade_out(black, 0.5);
   }
-
 }

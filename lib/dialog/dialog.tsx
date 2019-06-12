@@ -15,7 +15,7 @@ const Dialog: React.FunctionComponent<DialogProps> = (props) => {
     <Fragment>
       <div className={sc()}>
         <div className={sc('close')}>
-          <Icon name="close"/>
+          <Icon className={sc('close-icon')} name="close"/>
         </div>
         <header className={sc('header')}>title</header>
         <main className={sc('content')}>

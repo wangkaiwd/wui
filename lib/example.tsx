@@ -4,6 +4,7 @@ import ReactDOM from 'react-dom';
 import IconExample from './icon/icon.example';
 import Button from './button';
 import DialogExample from './dialog/dialog.example';
+import './index.scss';
 
 const Example: React.FunctionComponent = (props) => {
   return (

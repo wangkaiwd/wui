@@ -1,0 +1,8 @@
+[class^=wui] {
+  box-sizing: border-box;
+  line-height: 1.15;
+  &::before,
+  &::after {
+    box-sizing: border-box;
+  }
+}
