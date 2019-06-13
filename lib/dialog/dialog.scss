@@ -3,7 +3,6 @@
   top: 50%;
   left: 50%;
   width: 30em;
-  min-height: 10em;
   background-color: white;
   z-index: 2;
   transform: translate(-50%, -50%);
@@ -24,6 +23,20 @@
   &-close-icon {
     font-size: 26px;
   }
+  &-header {
+    font-size: 20px;
+    border-bottom: 1px solid #ccc;
+    padding: 8px 16px;
+  }
+  &-content {
+    padding: 8px 16px;
+    min-height: 10em;
+  }
+  &-footer {
+    text-align: right;
+    padding: 8px 16px;
+    border-top: 1px solid #ccc;
+  }
   &-mask {
     position: fixed;
     left: 0;
@@ -31,5 +44,13 @@
     right: 0;
     bottom: 0;
     background-color: fade_out(black, 0.5);
+  }
+  button {
+    &:first-child {
+      margin-right: 8px;
+    }
+    cursor: pointer;
+    height: 32px;
+    width: 4em;
   }
 }
