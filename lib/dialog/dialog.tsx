@@ -3,7 +3,7 @@ import {classMaker} from '../helpers/classes';
 import './dialog.scss';
 import Icon from '../icon/icon';
 import ReactDOM, {createPortal} from 'react-dom';
-
+// 这里有一个问题： 接口定义的属性无法很好地和默认属性结合
 interface DialogProps {
   visible: boolean,
   buttons?: Array<React.ReactElement>,
@@ -44,9 +44,6 @@ const Dialog: React.FunctionComponent<DialogProps> = (props) => {
     null;
 };
 export default Dialog;
-Dialog.defaultProps = {
-  maskClosable: true
-};
 const alert = (content: string) => {
   return modal(content);
 };
