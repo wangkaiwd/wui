@@ -37,10 +37,9 @@ const DialogExample: React.FunctionComponent = (props) => {
       <div>
         <h3>example 3</h3>
         {/*react只能通过自己来更新state的状态，而vue这里可以使用.sync语法糖进行简写*/}
-        <button onClick={() => confirm('confirm', onOk, onCancel,[
-          <button>1</button>,
-          <button>2</button>
-        ])}>alert me</button>
+        <button onClick={() => confirm('confirm', onOk, onCancel)}>
+          confirm me
+        </button>
       </div>
     </div>
   );

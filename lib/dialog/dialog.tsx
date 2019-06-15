@@ -61,12 +61,25 @@ const alert = (content: string) => {
   document.body.appendChild(div);
   ReactDOM.render(component, div);
 };
-const confirm = (content: string, onOk: () => void, onCancel: () => void, buttons: React.ReactElement[]) => {
+const confirm = (content: string, onOk?: () => void, onCancel?: () => void) => {
   const onClose = () => {
     ReactDOM.render(React.cloneElement(component, {visible: false}), div);
     ReactDOM.unmountComponentAtNode(div);
     div.remove();
   };
+  const onClickOk = () => {
+    onClose();
+    onOk && onOk();
+  };
+  const onClickCancel = () => {
+    onClose();
+    onCancel && onCancel();
+  };
+  // confirm的buttons我们可以自己帮用户写好
+  const buttons = [
+    <button onClick={onClickOk}>ok</button>,
+    <button onClick={onClickCancel}>cancel</button>
+  ];
   const component = (<Dialog onClose={onClose} visible={true} buttons={buttons}>{content}</Dialog>);
   const div = document.createElement('div');
   document.body.appendChild(div);
