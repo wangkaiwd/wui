@@ -68,9 +68,15 @@ const confirm = (content: string, onOk?: () => void, onCancel?: () => void) => {
 };
 const modal = (content: React.ReactNode, buttons?: React.ReactElement[]) => {
   const onClose = () => {
-    ReactDOM.render(React.cloneElement(component, {visible: false}), div);
-    ReactDOM.unmountComponentAtNode(div);
-    div.remove();
+    ReactDOM.render(React.cloneElement(component, {visible: false}), container);
+    ReactDOM.unmountComponentAtNode(container);
+    container.remove();
+  };
+  const renderDialog = () => {
+    const container = document.createElement('div');
+    document.body.appendChild(container);
+    ReactDOM.render(component, container);
+    return container;
   };
   const component = (
     <Dialog
@@ -81,9 +87,7 @@ const modal = (content: React.ReactNode, buttons?: React.ReactElement[]) => {
       {content}
     </Dialog>
   );
-  const div = document.createElement('div');
-  document.body.appendChild(div);
-  ReactDOM.render(component, div);
+  const container = renderDialog();
   return onClose;
 };
 export {alert, confirm, modal};
