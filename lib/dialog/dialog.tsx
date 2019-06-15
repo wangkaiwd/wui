@@ -61,7 +61,18 @@ const alert = (content: string) => {
   document.body.appendChild(div);
   ReactDOM.render(component, div);
 };
-export {alert};
+const confirm = (content: string, onOk: () => void, onCancel: () => void, buttons: React.ReactElement[]) => {
+  const onClose = () => {
+    ReactDOM.render(React.cloneElement(component, {visible: false}), div);
+    ReactDOM.unmountComponentAtNode(div);
+    div.remove();
+  };
+  const component = (<Dialog onClose={onClose} visible={true} buttons={buttons}>{content}</Dialog>);
+  const div = document.createElement('div');
+  document.body.appendChild(div);
+  ReactDOM.render(component, div);
+};
+export {alert, confirm};
 // 以element元素为样板克隆并返回新的React元素。返回元素的props是将新的props与原始元素的props浅层合并后的结果。
 // 新的子元素将取代现有的子元素，而来自原始元素的key和ref将被保留
 // React.cloneElement(element,[props],[...children])
@@ -73,3 +84,7 @@ export {alert};
 // ReactDOM.render(element,container,[,callback])
 // 在提供的container里渲染一个React元素，并返回对该组件的引用
 // 如果React元素之前已经在container里渲染过，这将会对其执行更新操作，并仅会在必要时改变DOM以映射最新的React元素
+// ------
+// ReactDOM.unmountComponentAtNode()
+// 从DOM中卸载组件，会将其事件处理器和state一并清除。如果组件被移除将返回true,如果没有组件可被移除将会返回false。如果指定容器
+// 上没有对应已挂载的组件，这个函数什么也不会做。
