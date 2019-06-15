@@ -64,9 +64,9 @@ const confirm = (content: string, onOk?: () => void, onCancel?: () => void) => {
     <button onClick={onClickOk}>ok</button>,
     <button onClick={onClickCancel}>cancel</button>
   ];
-  const onClose = modal(content, buttons);
+  const onClose = modal(content, buttons, onClickCancel);
 };
-const modal = (content: React.ReactNode, buttons?: React.ReactElement[]) => {
+const modal = (content: React.ReactNode, buttons?: React.ReactElement[], afterClose?: () => void) => {
   const onClose = () => {
     ReactDOM.render(React.cloneElement(component, {visible: false}), container);
     ReactDOM.unmountComponentAtNode(container);
@@ -78,9 +78,13 @@ const modal = (content: React.ReactNode, buttons?: React.ReactElement[]) => {
     ReactDOM.render(component, container);
     return container;
   };
+  const onClickIcon = () => {
+    onClose();
+    afterClose && afterClose();
+  };
   const component = (
     <Dialog
-      onClose={onClose}
+      onClose={onClickIcon}
       visible={true}
       buttons={buttons}
     >
