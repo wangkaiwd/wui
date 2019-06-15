@@ -48,25 +48,9 @@ Dialog.defaultProps = {
   maskClosable: true
 };
 const alert = (content: string) => {
-  const onClose = () => {
-    ReactDOM.render(React.cloneElement(component, {visible: false}), div);
-    div.remove();
-    // 官方提供的卸载api，会将事件处理器和state一并清除
-    ReactDOM.unmountComponentAtNode(div);
-  };
-  const component = (
-    <Dialog onClose={onClose} visible={true}>{content}</Dialog>
-  );
-  const div = document.createElement('div');
-  document.body.appendChild(div);
-  ReactDOM.render(component, div);
+  return modal(content);
 };
 const confirm = (content: string, onOk?: () => void, onCancel?: () => void) => {
-  const onClose = () => {
-    ReactDOM.render(React.cloneElement(component, {visible: false}), div);
-    ReactDOM.unmountComponentAtNode(div);
-    div.remove();
-  };
   const onClickOk = () => {
     onClose();
     onOk && onOk();
@@ -80,12 +64,29 @@ const confirm = (content: string, onOk?: () => void, onCancel?: () => void) => {
     <button onClick={onClickOk}>ok</button>,
     <button onClick={onClickCancel}>cancel</button>
   ];
-  const component = (<Dialog onClose={onClose} visible={true} buttons={buttons}>{content}</Dialog>);
+  const onClose = modal(content, buttons);
+};
+const modal = (content: React.ReactNode, buttons?: React.ReactElement[]) => {
+  const onClose = () => {
+    ReactDOM.render(React.cloneElement(component, {visible: false}), div);
+    ReactDOM.unmountComponentAtNode(div);
+    div.remove();
+  };
+  const component = (
+    <Dialog
+      onClose={onClose}
+      visible={true}
+      buttons={buttons}
+    >
+      {content}
+    </Dialog>
+  );
   const div = document.createElement('div');
   document.body.appendChild(div);
   ReactDOM.render(component, div);
+  return onClose;
 };
-export {alert, confirm};
+export {alert, confirm, modal};
 // 以element元素为样板克隆并返回新的React元素。返回元素的props是将新的props与原始元素的props浅层合并后的结果。
 // 新的子元素将取代现有的子元素，而来自原始元素的key和ref将被保留
 // React.cloneElement(element,[props],[...children])
@@ -101,3 +102,4 @@ export {alert, confirm};
 // ReactDOM.unmountComponentAtNode()
 // 从DOM中卸载组件，会将其事件处理器和state一并清除。如果组件被移除将返回true,如果没有组件可被移除将会返回false。如果指定容器
 // 上没有对应已挂载的组件，这个函数什么也不会做。
+
