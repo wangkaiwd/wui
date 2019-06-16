@@ -4,6 +4,7 @@ import ReactDOM from 'react-dom';
 import IconExample from './icon/icon.example';
 import Button from './button';
 import DialogExample from './dialog/dialog.example';
+import LayoutExample from './layout/layout.example';
 import './index.scss';
 
 const Example: React.FunctionComponent = (props) => {
@@ -25,12 +26,16 @@ const Example: React.FunctionComponent = (props) => {
             <li>
               <Link to={'/dialog'}>dialog</Link>
             </li>
+            <li>
+              <Link to={'/layout'}>Layout</Link>
+            </li>
           </ul>
         </aside>
         <main>
           <Route path={'/icon'} component={IconExample}/>
           <Route path={'/dialog'} component={DialogExample}/>
           <Route path={'/button'} component={Button}/>
+          <Route path={'/layout'} component={LayoutExample}/>
         </main>
       </div>
     </Router>

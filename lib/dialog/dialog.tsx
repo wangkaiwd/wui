@@ -15,7 +15,7 @@ const sc = scopeClass;
 const Dialog: React.FunctionComponent<DialogProps> = (props) => {
   const isShowFooter: boolean = !!(props.buttons && props.buttons.length > 0);
   const onClickMask: React.MouseEventHandler = (e) => {
-    if (props.maskClosable) {
+    if (props.maskClosable) { // 这里不会影响到代码出错
       props.onClose(e);
     }
   };
@@ -42,6 +42,11 @@ const Dialog: React.FunctionComponent<DialogProps> = (props) => {
   return props.visible ?
     createPortal(template, document.body) :
     null;
+};
+Dialog.defaultProps = {
+  maskClosable: true,
+  // onClose: (e) => {
+  // }
 };
 export default Dialog;
 const alert = (content: string) => {
