@@ -1,8 +1,19 @@
 import React from 'react';
+import classes, { classMaker } from '../helpers/classes';
 
-const Header: React.FunctionComponent = (props) => {
+const sc = classMaker('header');
+interface Props extends React.HTMLAttributes<HTMLElement> {
+
+}
+const Header: React.FunctionComponent<Props> = (props) => {
+  const { className, ...restProps } = props;
   return (
-    <div>{props.children}</div>
+    <div
+      className={classes(sc(), className)}
+      {...restProps}
+    >
+      {props.children}
+    </div>
   );
 };
 export default Header;

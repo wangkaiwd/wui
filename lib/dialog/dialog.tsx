@@ -1,8 +1,8 @@
-import React, {Fragment} from 'react';
-import {classMaker} from '../helpers/classes';
+import React, { Fragment } from 'react';
+import { classMaker } from '../helpers/classes';
 import './dialog.scss';
 import Icon from '../icon/icon';
-import ReactDOM, {createPortal} from 'react-dom';
+import ReactDOM, { createPortal } from 'react-dom';
 // 这里有一个问题： 接口定义的属性无法很好地和默认属性结合
 interface DialogProps {
   visible: boolean,
@@ -32,7 +32,7 @@ const Dialog: React.FunctionComponent<DialogProps> = (props) => {
         {isShowFooter &&
         <footer className={sc('footer')}>
           {props.buttons && props.buttons.map((button, i) =>
-            React.cloneElement(button, {key: i})
+            React.cloneElement(button, { key: i })
           )}
         </footer>}
       </div>
@@ -70,7 +70,7 @@ const confirm = (content: string, onOk?: () => void, onCancel?: () => void) => {
 };
 const modal = (content: React.ReactNode, buttons?: React.ReactElement[], afterClose?: () => void) => {
   const onClose = () => {
-    ReactDOM.render(React.cloneElement(component, {visible: false}), container);
+    ReactDOM.render(React.cloneElement(component, { visible: false }), container);
     ReactDOM.unmountComponentAtNode(container);
     container.remove();
   };
@@ -96,7 +96,7 @@ const modal = (content: React.ReactNode, buttons?: React.ReactElement[], afterCl
   const container = renderDialog();
   return onClose;
 };
-export {alert, confirm, modal};
+export { alert, confirm, modal };
 // 以element元素为样板克隆并返回新的React元素。返回元素的props是将新的props与原始元素的props浅层合并后的结果。
 // 新的子元素将取代现有的子元素，而来自原始元素的key和ref将被保留
 // React.cloneElement(element,[props],[...children])
