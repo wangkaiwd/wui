@@ -31,15 +31,22 @@ module.exports = {
         use: [
           'style-loader', // creates style nodes from JS strings
           'css-loader', // translates CSS into CommonJS
-          'sass-loader' // compiles Sass to CSS, using Node Sass by default
-        ]
+          'sass-loader',
+          {
+            loader: 'sass-resources-loader',
+            options: {
+              // Or array of paths
+              resources: [absPath('lib/assets/styles/helper.scss')]
+            },
+          }, // compiles Sass to CSS, using Node Sass by default
+        ],
       }
     ]
   },
   plugins: [
     new HtmlWebpackPlugin({
       title: 'WUI',
-      template: 'index.html'
+      template: 'example.html'
     }),
   ],
   resolve: {

@@ -1,5 +1,6 @@
 import React from 'react';
 import classes, { classMaker } from '../helpers/classes';
+import './layout.scss';
 
 const sc = classMaker('layout');
 interface Props extends React.HTMLAttributes<HTMLElement> {

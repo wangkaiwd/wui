@@ -1,7 +1,7 @@
 import React from 'react';
 import classes, { classMaker } from '../helpers/classes';
 
-const sc = classMaker('footer');
+const sc = classMaker('layout-footer');
 interface Props extends React.HTMLAttributes<HTMLElement> {
 
 }

@@ -1,7 +1,7 @@
 import React from 'react';
 import classes, { classMaker } from '../helpers/classes';
 
-const sc = classMaker('sider');
+const sc = classMaker('layout-sider');
 interface Props extends React.HTMLAttributes<HTMLElement> {
 
 }

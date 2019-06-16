@@ -5,7 +5,7 @@ import IconExample from './icon/icon.example';
 import Button from './button';
 import DialogExample from './dialog/dialog.example';
 import LayoutExample from './layout/layout.example';
-import './index.scss';
+import './example.scss';
 
 const Example: React.FunctionComponent = (props) => {
   return (
