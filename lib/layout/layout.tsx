@@ -9,18 +9,13 @@ interface Props extends React.HTMLAttributes<HTMLElement> {
 }
 const Layout: React.FunctionComponent<Props> = (props) => {
   const { className, ...restProps } = props;
-  let hasSider = undefined;
-  if ((props.children as Array<React.ReactElement>).length > 0) {
-    (props.children as Array<React.ReactElement>).map(item => {
-      if (item.type === Sider) {
-        hasSider = 'hasSider';
-      }
-    });
-  }
+  const childrenAssert = props.children as Array<React.ReactElement>;
+  const hasSider = childrenAssert.length > 0 &&
+    childrenAssert.some(child => child.type === Sider);
 
   return (
     <div
-      className={classes(sc(), className, hasSider)}
+      className={classes(sc('', { hasSider }), className)}
       {...restProps}
     >
       {props.children}
