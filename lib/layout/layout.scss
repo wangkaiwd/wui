@@ -1,9 +1,15 @@
 .wui-layout {
   display: flex;
   flex-direction: column;
+  &.hasSider {
+    flex-direction: row;
+  }
   &-content {
     // flex元素上的属性： flex-grow, flex-shrink, flex-basis
     // 而flex是这三个属性的简写，属性值是按照上面的顺序进行对应
+    flex: 1;
+  }
+  & {
     flex: 1;
   }
 }

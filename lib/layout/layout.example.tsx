@@ -25,7 +25,21 @@ const LayoutExample: React.FunctionComponent = (props) => {
           style={{ border: '2px solid red', height: '400px' }}
           className="my-layout"
         >
-          <Sider>sider</Sider>
+          <Header>header</Header>
+          <Layout>
+            <Sider style={{ border: '2px solid black' }}>sider</Sider>
+            <Content>content</Content>
+          </Layout>
+          <Footer>footer</Footer>
+        </Layout>
+      </div>
+      <div>
+        <h3>third example</h3>
+        <Layout
+          style={{ border: '2px solid red', height: '400px' }}
+          className="my-layout"
+        >
+          <Sider style={{ border: '2px solid black' }}>sider</Sider>
           <Layout>
             <Header>header</Header>
             <Content>content</Content>
