@@ -21,8 +21,9 @@ const Example: React.FunctionComponent = (props) => {
           <div className="example-logo">
             <img src={logo} alt=""/>
           </div>
+          <h3 className="example-name">WUI</h3>
         </Header>
-        <Layout>
+        <Layout className="example-content-wrapper">
           <Sider className="example-sider">
             <h3>组件</h3>
             <ul>
@@ -40,16 +41,18 @@ const Example: React.FunctionComponent = (props) => {
               </li>
             </ul>
           </Sider>
-          <Content className="example-sider">
-            <Route path={'/icon'} component={IconExample}/>
-            <Route path={'/dialog'} component={DialogExample}/>
-            <Route path={'/button'} component={Button}/>
-            <Route path={'/layout'} component={LayoutExample}/>
-          </Content>
+          <Layout>
+            <Content className="example-content">
+              <Route path={'/icon'} component={IconExample}/>
+              <Route path={'/dialog'} component={DialogExample}/>
+              <Route path={'/button'} component={Button}/>
+              <Route path={'/layout'} component={LayoutExample}/>
+            </Content>
+            <Footer className="example-footer">
+              footer
+            </Footer>
+          </Layout>
         </Layout>
-        <Footer className="example-footer">
-          footer
-        </Footer>
       </Layout>
     </Router>
   );

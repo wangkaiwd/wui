@@ -9,6 +9,10 @@
     // 而flex是这三个属性的简写，属性值是按照上面的顺序进行对应
     flex: 1;
   }
+  &-header,
+  &-footer {
+    min-height: 40px;
+  }
   & {
     flex: 1;
   }
