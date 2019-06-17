@@ -23,6 +23,10 @@ module.exports = {
         loader: 'awesome-typescript-loader'
       },
       {
+        test: /\.svg$/,
+        loader: 'svg-sprite-loader',
+      },
+      {
         test: /\.scss$/,
         use: [
           'style-loader', // creates style nodes from JS strings
@@ -38,7 +42,7 @@ module.exports = {
         ],
       },
       {
-        test: /\.(png|jpg|svg|jpeg|gif)$/,
+        test: /\.(png|jpg|jpeg|gif)$/,
         use: ['file-loader']
       }
     ]
