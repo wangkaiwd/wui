@@ -1,8 +1,24 @@
+@import "./assets/styles/reset";
+
 [class^=wui] {
   box-sizing: border-box;
   line-height: 1.15;
   &::before,
   &::after {
     box-sizing: border-box;
+  }
+}
+
+.example {
+  height: 100px;
+  border: 2px solid red;
+  .wui-layout {
+    border: 1px solid blue;
+  }
+  &-logo {
+    display: inline-block;
+    width: 100px;
+    height: 100px;
+    vertical-align: middle;
   }
 }
