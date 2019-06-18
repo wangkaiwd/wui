@@ -10,7 +10,8 @@ import Header from './layout/header';
 import Layout from './layout/layout';
 import Footer from './layout/footer';
 import Sider from './layout/sider';
-// import logo from './assets/imgs/logo.png';
+import FormExample from './form/form.example';
+// 使用require引入文件可以避开ts的检查
 const logo = require('./assets/imgs/logo.png');
 
 const Example: React.FunctionComponent = (props) => {
@@ -28,13 +29,16 @@ const Example: React.FunctionComponent = (props) => {
             <h3 className="example-sider-component">组件</h3>
             <ul>
               <li>
-                <NavLink to={'/icon'} activeClassName="example-sider-active">icon</NavLink>
+                <NavLink to={'/icon'} activeClassName="example-sider-active">Icon</NavLink>
               </li>
               <li>
-                <NavLink to={'/dialog'} activeClassName="example-sider-active">dialog</NavLink>
+                <NavLink to={'/dialog'} activeClassName="example-sider-active">Dialog</NavLink>
               </li>
               <li>
                 <NavLink to={'/layout'} activeClassName="example-sider-active">Layout</NavLink>
+              </li>
+              <li>
+                <NavLink to={'/form'} activeClassName="example-sider-active">Form</NavLink>
               </li>
             </ul>
           </Sider>
@@ -44,6 +48,7 @@ const Example: React.FunctionComponent = (props) => {
                 <Route path={'/icon'} component={IconExample}/>
                 <Route path={'/dialog'} component={DialogExample}/>
                 <Route path={'/layout'} component={LayoutExample}/>
+                <Route path={'/form'} component={FormExample}/>
               </div>
             </Content>
             <Footer className="example-footer">
