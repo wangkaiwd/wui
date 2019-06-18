@@ -12,6 +12,7 @@ import Footer from './layout/footer';
 import Sider from './layout/sider';
 // import logo from './assets/imgs/logo.png';
 const logo = require('./assets/imgs/logo.png');
+
 const Example: React.FunctionComponent = (props) => {
   return (
     <Router>

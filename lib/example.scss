@@ -66,8 +66,14 @@ $main-color: #72dfd0;
     height: calc(100vh - 60px);
   }
   &-content-main {
-    padding: 32px;
+    padding: 16px 32px;
     width: 68%;
+    pre {
+      padding: 10px;
+      line-height: 1.6;
+      font-family: "Fira Code Medium";
+      font-size: 12px;
+    }
   }
   &-content {
     overflow: auto;
