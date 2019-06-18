@@ -58,7 +58,7 @@ $main-color: #72dfd0;
       height: 100%;
       right: 0;
       top: 0;
-      background-color: #1890ff;
+      background-color: $main-color;
     }
   }
   &-content-wrapper {
