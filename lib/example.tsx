@@ -1,5 +1,5 @@
 import React from 'react';
-import { HashRouter as Router, Link, Route } from 'react-router-dom';
+import { HashRouter as Router, NavLink, Route } from 'react-router-dom';
 import ReactDOM from 'react-dom';
 import IconExample from './icon/icon.example';
 import DialogExample from './dialog/dialog.example';
@@ -24,24 +24,26 @@ const Example: React.FunctionComponent = (props) => {
         </Header>
         <Layout className="example-content-wrapper">
           <Sider className="example-sider">
-            <h3>组件</h3>
+            <h3 className="example-sider-component">组件</h3>
             <ul>
               <li>
-                <Link to={'/icon'}>icon</Link>
+                <NavLink to={'/icon'} activeClassName="example-sider-active">icon</NavLink>
               </li>
               <li>
-                <Link to={'/dialog'}>dialog</Link>
+                <NavLink to={'/dialog'} activeClassName="example-sider-active">dialog</NavLink>
               </li>
               <li>
-                <Link to={'/layout'}>Layout</Link>
+                <NavLink to={'/layout'} activeClassName="example-sider-active">Layout</NavLink>
               </li>
             </ul>
           </Sider>
           <Layout>
             <Content className="example-content">
-              <Route path={'/icon'} component={IconExample}/>
-              <Route path={'/dialog'} component={DialogExample}/>
-              <Route path={'/layout'} component={LayoutExample}/>
+              <div className="example-content-main">
+                <Route path={'/icon'} component={IconExample}/>
+                <Route path={'/dialog'} component={DialogExample}/>
+                <Route path={'/layout'} component={LayoutExample}/>
+              </div>
             </Content>
             <Footer className="example-footer">
               footer

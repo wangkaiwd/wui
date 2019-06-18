@@ -17,13 +17,13 @@ $main-color: #72dfd0;
     padding: 0 8px;
     display: flex;
     align-items: center;
-    font-size: 28px;
-    color: $white;
-    background-color: $main-color;
     flex-shrink: 0;
+    box-shadow: 0 2px 8px #f0f1f2;
   }
   &-name {
-    margin-left: 6px;
+    font-size: 24px;
+    color: #314659;
+    margin-left: 12px;
   }
   &-logo {
     display: inline-block;
@@ -33,9 +33,41 @@ $main-color: #72dfd0;
   }
   &-sider {
     overflow: auto;
+    width: 16%;
+    padding: 0 0 8px;
+    border-right: 1px solid #eeeeee;
+    color: #314659;
+    a {
+      padding: 0 16px;
+      display: block;
+      line-height: 40px;
+    }
+  }
+  &-sider-component {
+    font-size: 18px;
+    padding: 8px;
+  }
+  &-sider-active {
+    position: relative;
+    background-color: #e6f7ff;
+    color: #1890ff;
+    &::after {
+      content: '';
+      position: absolute;
+      width: 4px;
+      height: 100%;
+      right: 0;
+      top: 0;
+      background-color: #1890ff;
+    }
   }
   &-content-wrapper {
+    padding-top: 16px;
     height: calc(100vh - 60px);
+  }
+  &-content-main {
+    padding: 32px;
+    width: 68%;
   }
   &-content {
     overflow: auto;
