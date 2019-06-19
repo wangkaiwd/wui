@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { Fragment, useState } from 'react';
 import Form, { FormValue } from './form';
 
 const FormExample: React.FC = (props) => {
@@ -29,6 +29,12 @@ const FormExample: React.FC = (props) => {
       fields={fields}
       onChange={onChange}
       onSubmit={onSubmit}
+      buttons={
+        <Fragment>
+          <button type="submit">提交</button>
+          <button>返回</button>
+        </Fragment>
+      }
     />
   );
 };

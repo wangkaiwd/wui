@@ -1,5 +1,7 @@
 import React from 'react';
+import classes, { classMaker } from '../helpers/classes';
 
+const sc = classMaker('form');
 export interface FormValue {
   [key: string]: string
 }
@@ -11,22 +13,33 @@ interface FieldsProps {
 }
 
 interface Props {
+  className?: string,
   formData: FormValue,
   fields: Array<FieldsProps>,
   onChange: (newValue: FormValue) => void,
-  onSubmit: () => void
+  onSubmit: () => void,
+  buttons: React.ReactFragment
 }
 
 const Form: React.FC<Props> = (props) => {
+  const {
+    className,
+    formData,
+    fields,
+    onChange,
+    onSubmit,
+    buttons,
+    ...resetProps
+  } = props;
   // const onChange = (value: string, key: string) => {
   //   const newValue = { ...props.formData, [key]: value };
   //   props.onChange(newValue);
   // };
-  const onChange = (key: string, e: React.ChangeEvent<HTMLInputElement>) => {
+  const onInputChange = (key: string, e: React.ChangeEvent<HTMLInputElement>) => {
     const newValue = { ...props.formData, [key]: e.target.value };
     props.onChange(newValue);
   };
-  const onSubmit = (e: React.FormEvent) => {
+  const onFormSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     props.onSubmit();
   };
@@ -38,20 +51,26 @@ const Form: React.FC<Props> = (props) => {
     props.onChange(tempFormData);
   };
   return (
-    <form onSubmit={onSubmit} onReset={onReset}>
-      {props.fields.map(f => (
+    <form
+      className={classes(sc(), className)}
+      onSubmit={onFormSubmit}
+      onReset={onReset}
+      {...resetProps}
+    >
+      {fields.map(f => (
         <div key={f.key}>
           {f.label}
           <input
             value={props.formData[f.key]}
             type={f.input.type}
             // onChange={(e) => onChange(e.target.value, f.key)}
-            onChange={onChange.bind(null, f.key)}
+            onChange={onInputChange.bind(null, f.key)}
           />
         </div>
       ))}
-      <button type="submit">submit</button>
-      <button type="reset">reset</button>
+      <div className={sc('buttons')}>
+        {buttons}
+      </div>
     </form>
   );
 };
