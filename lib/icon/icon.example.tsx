@@ -1,14 +1,17 @@
 import React from 'react';
-import Icon from './icon';
+import CodeItem from '../codeItem';
+import IconExample1 from './icon.example.1';
+import IconExample2 from './icon.example.2';
 
-
-const IconExample: React.FunctionComponent = (props) => {
+const IconExample: React.FunctionComponent = () => {
   return (
     <div>
-      <div>
-        <Icon name="alipay"/>
-      </div>
-      <Icon name="qq"/>
+      <CodeItem code={require('!!raw-loader!./icon.example.1').default}>
+        <IconExample1/>
+      </CodeItem>
+      <CodeItem code={require('!!raw-loader!./icon.example.2').default}>
+        <IconExample2/>
+      </CodeItem>
     </div>
   );
 };
