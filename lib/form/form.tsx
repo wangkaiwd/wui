@@ -1,5 +1,6 @@
 import React from 'react';
 import classes, { classMaker } from '../helpers/classes';
+import { FormError } from './validator';
 
 const sc = classMaker('form');
 export interface FormValue {
@@ -16,6 +17,7 @@ interface Props {
   className?: string,
   formData: FormValue,
   fields: Array<FieldsProps>,
+  errors: FormError,
   onChange: (newValue: FormValue) => void,
   onSubmit: () => void,
   buttons: React.ReactFragment
@@ -26,6 +28,7 @@ const Form: React.FC<Props> = (props) => {
     className,
     formData,
     fields,
+    errors,
     onChange,
     onSubmit,
     buttons,
@@ -66,6 +69,7 @@ const Form: React.FC<Props> = (props) => {
             // onChange={(e) => onChange(e.target.value, f.key)}
             onChange={onInputChange.bind(null, f.key)}
           />
+          {errors[f.key]}
         </div>
       ))}
       <div className={sc('buttons')}>
