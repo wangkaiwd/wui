@@ -12,6 +12,7 @@ import Footer from './layout/footer';
 import Sider from './layout/sider';
 import FormExample from './form/form.example';
 import Icon from './icon/icon';
+import ButtonExample from './button/button.example';
 // 使用require引入文件可以避开ts的检查
 const logo = require('./assets/imgs/logo.png');
 
@@ -48,6 +49,9 @@ const Example: React.FunctionComponent = (props) => {
               <li>
                 <NavLink to={'/form'} activeClassName="example-sider-active">Form</NavLink>
               </li>
+              <li>
+                <NavLink to={'/button'} activeClassName="example-sider-active">Button</NavLink>
+              </li>
             </ul>
           </Sider>
           <Layout>
@@ -57,6 +61,7 @@ const Example: React.FunctionComponent = (props) => {
                 <Route path={'/dialog'} component={DialogExample}/>
                 <Route path={'/layout'} component={LayoutExample}/>
                 <Route path={'/form'} component={FormExample}/>
+                <Route path={'/button'} component={ButtonExample}/>
               </div>
             </Content>
             <Footer className="example-footer">
