@@ -1,0 +1,12 @@
+.wui-code-item {
+  &-body {
+    display: flex;
+    padding: 24px;
+    background-color: #f5f5f5;
+    border-radius: 4px;
+    justify-content: center;
+  }
+  &-code {
+    margin: 8px 0;
+  }
+}

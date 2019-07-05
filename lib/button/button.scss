@@ -15,64 +15,120 @@ $text-color: rgba(0, 0, 0, 0.87);
   font-size: 14px;
   font-weight: 500;
   line-height: 1.75;
-  box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12);
+  display: inline-flex;
+  vertical-align: top;
+  align-items: center;
   cursor: pointer;
   transition: all 500ms;
-  &-default {
-    background-color: $default;
+  &.wui-button-contained {
+    box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12);
+  }
+  &-left-icon {
+    margin-right: 8px;
+  }
+  &.wui-button-default {
     color: $text-color;
     &:hover {
       background-color: darken($default, 10%);
     }
     &:after {
-      background-color: rgba(0, 0, 0, 0.3);
+      background-color: rgba(0, 0, 0, 0.2);
     }
     &:focus:not(:active)::after {
       display: block;
     }
   }
-  &-primary {
-    background-color: $primary;
-    color: $white;
+  &.wui-button-primary {
     &:hover {
       background-color: darken($primary, 10%);
     }
     &:after {
-      background-color: rgba(255, 255, 255, 0.3);
+      background-color: rgba(255, 255, 255, 0.2);
     }
     &:focus:not(:active)::after {
       display: block;
     }
   }
-  &-danger {
-    background-color: $danger;
-    color: $white;
+  &.wui-button-danger {
     &:hover {
       background-color: darken($danger, 10%);
     }
     &:after {
-      background-color: rgba(255, 255, 255, 0.3);
+      background-color: rgba(255, 255, 255, 0.2);
     }
     &:focus:not(:active)::after {
       display: block;
     }
   }
-  &-disabled {
+  &.wui-button-disabled {
     color: rgba(0, 0, 0, 0.26);
     box-shadow: none;
+    &:focus:not(:active)::after {
+      display: none;
+    }
+    cursor: not-allowed;
+  }
+  &-contained.wui-button-default {
+    background-color: $default;
+  }
+  &-contained.wui-button-primary {
+    background-color: $primary;
+    color: $white;
+  }
+  &-contained.wui-button-danger {
+    background-color: $danger;
+    color: $white;
+  }
+  &-contained.wui-button-disabled {
     background-color: $disabled;
     &:hover {
       background-color: $disabled;
     }
-    &:focus:not(:active)::after {
-      display: none;
+  }
+  &-contained:focus {
+    border: none;
+  }
+
+  &-outline {
+    border: 1px solid rgba(0, 0, 0, 0.23);
+    background-color: transparent;
+  }
+  &-outline.wui-button-default {
+    &:hover {
+      background-color: darken($default, 4%);
+    }
+    &:after {
+      background-color: rgba(0, 0, 0, 0.2);
+    }
+  }
+  &-outline.wui-button-primary {
+    color: $primary;
+    border-color: $primary;
+    &:hover {
+      background-color: lighten($primary, 46%);
+    }
+    &:after {
+      background-color: rgba(0, 0, 0, 0.2);
+    }
+  }
+  &-outline.wui-button-danger {
+    color: $danger;
+    border-color: $danger;
+    &:hover {
+      background-color: lighten($danger, 46%);
+    }
+    &:after {
+      background-color: rgba(0, 0, 0, 0.2);
+    }
+  }
+  &-outline.wui-button-disabled {
+    border-color: $disabled;
+    :hover {
+      background-color: $disabled;
     }
   }
   &:active {
     box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2), 0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12);
-  }
-  &:focus {
-    border: none;
   }
 
   &::after {
@@ -86,9 +142,10 @@ $text-color: rgba(0, 0, 0, 0.87);
     margin-left: -50px;
     top: 50%;
     left: 50%;
-    animation: ripple 1.2s;
+    animation: ripple 1.6s;
     opacity: 0;
   }
+
 
   @keyframes ripple {
     from {

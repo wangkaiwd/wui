@@ -1,17 +1,14 @@
 import React from 'react';
-import Button from './button';
+import CodeItem from '../codeItem';
+import ButtonExample1 from './button.example.1';
+import './button.example.scss';
 
 const ButtonExample: React.FC = () => {
   return (
     <div>
-      <h3>demo1</h3>
-      <Button className="hhh">DEFAULT</Button>
-      <h3>demo1</h3>
-      <Button className="hhh" color="primary">DEFAULT</Button>
-      <h3>demo1</h3>
-      <Button className="hhh" color="danger">DEFAULT</Button>
-      <h3>demo1</h3>
-      <Button className="hhh" color="danger" disabled>DISABLED</Button>
+      <CodeItem code={require('!!raw-loader!./button.example.1').default}>
+        <ButtonExample1/>
+      </CodeItem>
     </div>
   );
 };
