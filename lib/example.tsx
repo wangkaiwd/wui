@@ -1,7 +1,8 @@
-import React from 'react';
-import { HashRouter as Router, NavLink, Route } from 'react-router-dom';
+import React, { lazy, Suspense } from 'react';
+import { HashRouter as Router, NavLink, Route, Switch } from 'react-router-dom';
 import ReactDOM from 'react-dom';
-import IconExample from './icon/icon.example';
+// import IconExample from './icon/icon.example';
+const IconExample = lazy(() => import(/* webpackChunkName: "iconExample" */'./icon/icon.example'));
 import DialogExample from './dialog/dialog.example';
 import LayoutExample from './layout/layout.example';
 import './example.scss';
@@ -57,11 +58,15 @@ const Example: React.FunctionComponent = (props) => {
           <Layout>
             <Content className="example-content">
               <div className="example-content-main">
-                <Route path={'/icon'} component={IconExample}/>
-                <Route path={'/dialog'} component={DialogExample}/>
-                <Route path={'/layout'} component={LayoutExample}/>
-                <Route path={'/form'} component={FormExample}/>
-                <Route path={'/button'} component={ButtonExample}/>
+                <Suspense fallback={<div>loading...</div>}>
+                  <Switch>
+                    <Route path={'/icon'} component={IconExample}/>
+                    <Route path={'/dialog'} component={DialogExample}/>
+                    <Route path={'/layout'} component={LayoutExample}/>
+                    <Route path={'/form'} component={FormExample}/>
+                    <Route path={'/button'} component={ButtonExample}/>
+                  </Switch>
+                </Suspense>
               </div>
             </Content>
             <Footer className="example-footer">
