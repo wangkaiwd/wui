@@ -1,6 +1,7 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const absPath = dir => path.resolve(__dirname, `./${dir}`);
+const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
 module.exports = {
   entry: {
     example: './lib/example.tsx'
@@ -13,6 +14,7 @@ module.exports = {
     // amd,commonjs,umd: https://www.davidbcalhoun.com/2014/what-is-amd-commonjs-and-umd/
     libraryTarget: 'umd'
   },
+  stats: 'errors-only',
   // loader: 让webpack能够去处理那些非javascript文件
   module: {
     rules: [
@@ -52,6 +54,7 @@ module.exports = {
       title: 'WUI',
       template: 'example.html'
     }),
+    new FriendlyErrorsWebpackPlugin()
   ],
   resolve: {
     extensions: ['.js', '.json', '.ts', '.tsx']

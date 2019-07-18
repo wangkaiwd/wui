@@ -1,7 +1,7 @@
 const base = require('./webpack.config');
+const merge = require('webpack-merge');
 
-module.exports = {
-  ...base,
+module.exports = merge(base, {
   mode: 'production',
   // external: 外面的，外部的；表面上的
   // 提供了从输出的bundle中排除依赖的方法。
@@ -20,4 +20,4 @@ module.exports = {
       root: 'ReactDOM',
     }
   }
-};
+});
