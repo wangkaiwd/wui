@@ -3,6 +3,7 @@ const merge = require('webpack-merge');
 
 module.exports = merge(base, {
   mode: 'production',
+  devtool: 'cheap-module-source-map',
   // external: 外面的，外部的；表面上的
   // 提供了从输出的bundle中排除依赖的方法。
   // 官方文档： https://webpack.docschina.org/configuration/externals/#src/components/Sidebar/Sidebar.jsx

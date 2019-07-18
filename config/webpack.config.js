@@ -8,7 +8,7 @@ module.exports = {
     example: absPath('../lib/example.tsx')
   },
   output: {
-    path: absPath('../build_prod'),
+    path: absPath('../build'),
     filename: '[name]_[hash:8].js',
     library: 'WUI', // bundle文件的名称
     // Universal Module Definition
@@ -16,7 +16,7 @@ module.exports = {
     // amd,commonjs,umd: https://www.davidbcalhoun.com/2014/what-is-amd-commonjs-and-umd/
     libraryTarget: 'umd'
   },
-  stats: 'errors-only',
+  // stats: 'errors-only',
   // loader: 让webpack能够去处理那些非javascript文件
   module: {
     rules: [
@@ -76,6 +76,7 @@ module.exports = {
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
       title: 'WUI',
+      filename: 'index.html',
       template: absPath('../example.html')
     }),
     new FriendlyErrorsWebpackPlugin(),
@@ -83,7 +84,7 @@ module.exports = {
   resolve: {
     extensions: ['.js', '.json', '.ts', '.tsx']
   },
-  performance: {
-    hints: false
-  }
+  // performance: {
+  //   hints: false
+  // }
 };
