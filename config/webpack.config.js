@@ -8,7 +8,7 @@ module.exports = {
     example: absPath('../lib/example.tsx')
   },
   output: {
-    path: absPath('../build'),
+    path: absPath('../dist/lib'),
     filename: '[name]_[hash:8].js',
     library: 'WUI', // bundle文件的名称
     // Universal Module Definition
