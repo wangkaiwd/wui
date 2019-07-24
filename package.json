@@ -6,6 +6,7 @@
     "start": "webpack-dev-server --env.MODE=dev --config config/webpack.config.dev.js",
     "build:prod": "webpack --env.MODE=prod --config config/webpack.config.prod.js",
     "build:doc": "webpack --env.MODE=doc --config config/webpack.config.doc.js",
+    "build:analysis": "webpack --env.MODE=analysis --config config/webpack.config.doc.js",
     "test": "jest --config=jest.config.js --runInBand"
   },
   "repository": "git@github.com:wangkaiwd/xxx-ui.git",
@@ -33,6 +34,7 @@
     "mini-css-extract-plugin": "^0.8.0",
     "node-sass": "^4.12.0",
     "postcss-loader": "^3.0.0",
+    "raw-loader": "^3.0.0",
     "react-test-renderer": "^16.8.6",
     "sass-loader": "^7.1.0",
     "sass-resources-loader": "^2.0.1",
@@ -41,10 +43,10 @@
     "ts-jest": "^24.0.2",
     "typescript": "^3.5.1",
     "webpack": "^4.32.2",
+    "webpack-bundle-analyzer": "^3.3.2",
     "webpack-cli": "^3.3.2",
     "webpack-dev-server": "^3.5.1",
-    "webpack-merge": "^4.2.1",
-    "raw-loader": "^3.0.0"
+    "webpack-merge": "^4.2.1"
   },
   "dependencies": {
     "prism-react-renderer": "^0.1.6",
