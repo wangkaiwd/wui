@@ -94,6 +94,7 @@ module.exports = (env) => {
           vendor: Object.keys(pkg.dependencies)
         }
       }),
+      // 终端报错解决： https://github.com/mzgoddard/hard-source-webpack-plugin/issues/416#issuecomment-411832075
       new HardSourceWebpackPlugin(),
       new FriendlyErrorsWebpackPlugin(),
       new MiniCssExtractPlugin({
