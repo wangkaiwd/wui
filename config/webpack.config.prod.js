@@ -1,7 +1,7 @@
 const base = require('./webpack.config');
 const merge = require('webpack-merge');
 
-module.exports = merge(base, {
+module.exports = (env) => merge(base(env), {
   mode: 'production',
   devtool: 'cheap-module-source-map',
   // external: 外面的，外部的；表面上的

@@ -2,7 +2,7 @@ const base = require('./webpack.config');
 const path = require('path');
 const absPath = dir => path.resolve(__dirname, `${dir}`);
 const merge = require('webpack-merge');
-module.exports = merge(base, {
+module.exports = (env) => merge(base(env), {
   mode: 'development',
   devtool: 'cheap-module-eval-source-map',
   devServer: {
