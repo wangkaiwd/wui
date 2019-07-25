@@ -19,6 +19,7 @@
     "@types/react": "^16.8.19",
     "@types/react-dom": "^16.8.4",
     "@types/react-router-dom": "^4.3.3",
+    "@types/react-test-renderer": "^16.8.3",
     "autodll-webpack-plugin": "^0.4.2",
     "autoprefixer": "^9.6.1",
     "awesome-typescript-loader": "^5.2.1",
