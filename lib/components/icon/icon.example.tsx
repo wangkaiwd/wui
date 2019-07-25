@@ -1,5 +1,5 @@
 import React from 'react';
-import CodeItem from '../codeItem';
+import CodeItem from '../../doc/template/codeItem';
 import IconExample1 from './icon.example.1';
 import IconExample2 from './icon.example.2';
 

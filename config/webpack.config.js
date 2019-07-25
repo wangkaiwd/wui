@@ -10,7 +10,7 @@ const pkg = require('../package');
 module.exports = (env) => {
   return {
     entry: {
-      example: absPath('../lib/example.tsx')
+      example: absPath('../lib/doc/index.tsx')
     },
     output: {
       path: absPath('../dist'),

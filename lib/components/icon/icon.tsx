@@ -1,7 +1,7 @@
 import React from 'react';
 import './importAllSvg';
 import './icon.scss';
-import classes from '../helpers/classes';
+import classes from '../../helpers/classes';
 // Icon 属性继承了React的SVG属性 并且需要传入SVGElement来作为参数
 // 这样就可以将所有svg支持的原生属性都在Icon组件上支持
 interface IconProps extends React.SVGAttributes<SVGElement> {

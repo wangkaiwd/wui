@@ -1,11 +1,11 @@
 import React from 'react';
-import classes, { classMaker } from '../helpers/classes';
+import classes, { classMaker } from '../../helpers/classes';
 
-const sc = classMaker('layout-header');
+const sc = classMaker('layout-footer');
 interface Props extends React.HTMLAttributes<HTMLElement> {
 
 }
-const Header: React.FunctionComponent<Props> = (props) => {
+const Footer: React.FunctionComponent<Props> = (props) => {
   const { className, ...restProps } = props;
   return (
     <div
@@ -16,4 +16,5 @@ const Header: React.FunctionComponent<Props> = (props) => {
     </div>
   );
 };
-export default Header;
+export default Footer;
+

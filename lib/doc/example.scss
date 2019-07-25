@@ -1,4 +1,4 @@
-@import "./assets/styles/reset";
+@import "../assets/styles/reset";
 
 [class^=wui] {
   box-sizing: border-box;
@@ -80,11 +80,10 @@ $main-color: #72dfd0;
   }
   &-content-main {
     padding: 16px 32px;
-    width: 68%;
+    width: 80%;
     pre {
       padding: 10px;
       line-height: 1.6;
-      font-family: "Fira Code Medium", Inconsolata;
       font-size: 14px;
     }
   }

@@ -1,5 +1,5 @@
 import React from 'react';
-import classes, { classMaker } from '../helpers/classes';
+import classes, { classMaker } from '../../helpers/classes';
 
 const sc = classMaker('layout-content');
 // 这里的类型为什么是React.HTMLAttributes<HTMLElement>

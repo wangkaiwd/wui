@@ -1,5 +1,5 @@
 import React from 'react';
-import classes, { classMaker } from '../helpers/classes';
+import classes, { classMaker } from '../../helpers/classes';
 import { FormError } from './validator';
 
 const sc = classMaker('form');

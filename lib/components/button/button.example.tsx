@@ -1,5 +1,5 @@
 import React from 'react';
-import CodeItem from '../codeItem';
+import CodeItem from '../../doc/template/codeItem';
 import ButtonExample1 from './button.example.1';
 import './button.example.scss';
 

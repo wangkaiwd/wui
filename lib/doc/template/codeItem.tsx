@@ -1,7 +1,6 @@
 import React from 'react';
 import Highlight, { defaultProps } from 'prism-react-renderer';
-// import lightTheme from 'prism-react-renderer/themes/oceanicNext';
-import { classMaker } from './helpers/classes';
+import { classMaker } from '../../helpers/classes';
 import './codeItem.scss';
 
 const sc = classMaker('code-item');

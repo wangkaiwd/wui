@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import { classMaker } from '../helpers/classes';
+import { classMaker } from '../../helpers/classes';
 import './dialog.scss';
 import Icon from '../icon/icon';
 import ReactDOM, { createPortal } from 'react-dom';

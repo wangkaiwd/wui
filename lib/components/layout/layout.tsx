@@ -1,5 +1,5 @@
 import React from 'react';
-import classes, { classMaker } from '../helpers/classes';
+import classes, { classMaker } from '../../helpers/classes';
 import './layout.scss';
 import Sider from './sider';
 
