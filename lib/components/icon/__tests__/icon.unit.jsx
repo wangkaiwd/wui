@@ -4,8 +4,8 @@ import Icon from '../icon';
 import render from 'react-test-renderer';
 
 describe('Icon组件', () => {
-  it('render successfully', () => {
-    // const json = render.create(<Icon name={'qq'}/>).toJSON();
-    // expect(json).toMatchSnapshot();
-  });
+  // it('render successfully', () => {
+  //   const json = render.create(<Icon name={'qq'}/>).toJSON();
+  //   expect(json).toMatchSnapshot();
+  // });
 });

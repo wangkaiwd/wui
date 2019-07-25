@@ -12,6 +12,7 @@ const routeConfigs: RouteConfig[] = [
   { path: '/icon', component: lazyComponent('icon/icon.example'), name: 'Icon' },
   { path: '/button', component: lazyComponent('button/button.example'), name: 'Button' },
   { path: '/layout', component: lazyComponent('layout/layout.example'), name: 'Layout' },
+  { path: '/card', component: lazyComponent('card/card.example'), name: 'Card' },
   { path: '/dialog', component: lazyComponent('dialog/dialog.example'), name: 'Dialog' },
   { path: '/form', component: lazyComponent('form/form.example'), name: 'Form' }
 ];

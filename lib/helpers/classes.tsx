@@ -6,6 +6,7 @@ const classes = (...classNames: Array<string | undefined>) => {
   return classNames.filter(Boolean).join(' ');
 };
 export default classes;
+
 // 可以先把第一个参数固定
 /**
  * 函数要实现的功能，类似于bem，可以参考其他第三方组件库的实现方式，比如：vant-ui：
@@ -15,8 +16,9 @@ export default classes;
  *  4. 混合情况： sc('01','02',{hasSider:true}): wui-demo-01 wui-demo-02 wui-demo-hasSider
  */
 interface X {
-  [K: string]: boolean | string
+  [K: string]: boolean | string | null | undefined
 }
+
 export const classMaker = (prefix?: string) => (...names: Array<string | undefined | X>) => {
   const fullPrefix = `wui-${prefix}`;
   const resultNames = names
