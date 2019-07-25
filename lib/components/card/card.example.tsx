@@ -1,23 +1,12 @@
 import React from 'react';
-import Card from './card';
-import Button from '../button/button';
+import CodeItem from '../../doc/template/codeItem';
+import CardExample1 from './card.example.1';
 
 const CardExample = () => {
   return (
-    <div>
-      <Card
-        title={'标题'}
-        border
-        hoverable
-        extra={<Button color={'primary'}>extra button</Button>}
-      >
-        <ul>
-          <li> Card content</li>
-          <li> Card content</li>
-          <li> Card content</li>
-        </ul>
-      </Card>
-    </div>
+    <CodeItem code={require('!!raw-loader!./card.example.1').default}>
+      <CardExample1/>
+    </CodeItem>
   );
 };
 

@@ -3,6 +3,8 @@ import { classMaker } from '../../helpers/classes';
 import './dialog.scss';
 import Icon from '../icon/icon';
 import ReactDOM, { createPortal } from 'react-dom';
+import Button from '../button/button';
+
 // 这里有一个问题： 接口定义的属性无法很好地和默认属性结合
 interface DialogProps {
   visible: boolean,
@@ -10,6 +12,7 @@ interface DialogProps {
   onClose: React.MouseEventHandler,
   maskClosable?: boolean
 }
+
 const scopeClass = classMaker('dialog');
 const sc = scopeClass;
 const Dialog: React.FunctionComponent<DialogProps> = (props) => {
@@ -63,8 +66,8 @@ const confirm = (content: string, onOk?: () => void, onCancel?: () => void) => {
   };
   // confirm的buttons我们可以自己帮用户写好
   const buttons = [
-    <button onClick={onClickOk}>ok</button>,
-    <button onClick={onClickCancel}>cancel</button>
+    <Button onClick={onClickOk}>ok</Button>,
+    <Button onClick={onClickCancel}>cancel</Button>
   ];
   const onClose = modal(content, buttons, onClickCancel);
 };

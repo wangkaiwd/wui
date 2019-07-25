@@ -8,6 +8,12 @@
   }
   &-code {
     margin: 8px 0;
+    .wui-card-main {
+      padding: 0;
+    }
+    .wui-card-main.wui-card-title {
+      border: none;
+    }
   }
   .prism-code.language-jsx {
     padding: 24px 16px;

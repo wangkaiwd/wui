@@ -2,6 +2,7 @@ import React from 'react';
 import Highlight, { defaultProps } from 'prism-react-renderer';
 import { classMaker } from '../../helpers/classes';
 import './codeItem.scss';
+import Card from '../../components/card/card';
 
 const sc = classMaker('code-item');
 
@@ -16,7 +17,7 @@ const CodeItem: React.FC<Props> = (props) => {
       <div className={sc('body')}>
         {props.children}
       </div>
-      <div className={sc('code')}>
+      <Card className={sc('code')} title={'代码演示'} border={false}>
         <Highlight {...defaultProps} theme={undefined} code={props.code} language="jsx">
           {({ className, style, tokens, getLineProps, getTokenProps }) => (
             <pre className={className} style={style}>
@@ -30,7 +31,7 @@ const CodeItem: React.FC<Props> = (props) => {
             </pre>
           )}
         </Highlight>
-      </div>
+      </Card>
     </div>
   );
 };

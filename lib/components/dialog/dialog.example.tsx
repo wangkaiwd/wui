@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import Dialog, {alert, confirm, modal} from './dialog';
+import Button from '../button/button';
 
 const DialogExample: React.FunctionComponent = (props) => {
   const [x, setX] = useState();
@@ -14,8 +15,8 @@ const DialogExample: React.FunctionComponent = (props) => {
     const modalHtml = (
       <div>
         <h3>I am modal</h3>
-        <button onClick={() => closeModal()}>ok</button>
-        <button onClick={() => closeModal()}>cancel</button>
+        <Button onClick={() => closeModal()}>ok</Button>
+        <Button onClick={() => closeModal()}>cancel</Button>
       </div>
     );
     const closeModal = modal(modalHtml);
@@ -25,14 +26,14 @@ const DialogExample: React.FunctionComponent = (props) => {
       <div>
         <h3>example 1</h3>
         {/*react只能通过自己来更新state的状态，而vue这里可以使用.sync语法糖进行简写*/}
-        <button onClick={() => setX(true)}>click me</button>
+        <Button onClick={() => setX(true)}>click me</Button>
         <Dialog
           visible={x}
           onClose={onClose}
           buttons={
             [
-              <button onClick={() => setX(false)}>1</button>,
-              <button onClick={() => setX(false)}>2</button>
+              <Button onClick={() => setX(false)}>1</Button>,
+              <Button onClick={() => setX(false)}>2</Button>
             ]
           }
         >
@@ -41,13 +42,13 @@ const DialogExample: React.FunctionComponent = (props) => {
       </div>
       <div>
         <h3>example 2</h3>
-        <button onClick={() => alert('1')}>alert me</button>
+        <Button onClick={() => alert('1')}>alert me</Button>
       </div>
       <div>
         <h3>example 3</h3>
-        <button onClick={() => confirm('confirm', onOk, onCancel)}>
+        <Button onClick={() => confirm('confirm', onOk, onCancel)}>
           confirm me
-        </button>
+        </Button>
       </div>
       <div>
         <h3>example 5</h3>
@@ -56,9 +57,9 @@ const DialogExample: React.FunctionComponent = (props) => {
 
           抽象：要在组件外面调用组件里的api
         */}
-        <button onClick={onClickModal}>
+        <Button onClick={onClickModal}>
           modal me
-        </button>
+        </Button>
       </div>
     </div>
   );

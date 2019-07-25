@@ -32,7 +32,7 @@ const Card: React.FunctionComponent<Props> = (props) => {
           <span>{extra}</span>
         </header>
       }
-      <main>
+      <main className={sc('main', { title: title ? 'title' : false })}>
         {props.children}
       </main>
     </div>
