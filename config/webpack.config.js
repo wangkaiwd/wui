@@ -20,7 +20,8 @@ module.exports = (env) => {
       // Universal Module Definition
       // universal: 普遍的，通用的
       // amd,commonjs,umd: https://www.davidbcalhoun.com/2014/what-is-amd-commonjs-and-umd/
-      libraryTarget: 'umd'
+      libraryTarget: 'umd',
+      publicPath: './'
     },
     stats: 'errors-only',
     // loader: 让webpack能够去处理那些非javascript文件

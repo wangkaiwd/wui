@@ -1,1 +1,0 @@
-{"version":3,"file":"28_b75e7300_chunk.js","sources":["webpack://WUI/./lib/components/icon/__tests__/__snapshots__/icon.unit.tsx.snap"],"sourcesContent":["// Jest Snapshot v1, https://goo.gl/fbAQLP\n\nexports[`Icon组件 render successfully 1`] = `\n<svg\n  className=\"wui-icon\"\n>\n  <use\n    xlinkHref=\"#qq\"\n  />\n</svg>\n`;\n"],"mappings":"AAEA","sourceRoot":""}
