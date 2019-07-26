@@ -1,1 +1,0 @@
-{"version":3,"file":"18_e035c49f_chunk.js","sources":["webpack://WUI/./lib/components/icon/icon.example.1.tsx"],"sourcesContent":["import React from 'react';\nimport Icon from './icon';\n\nfunction IconExample1 () {\n  return (\n    <Icon name=\"alipay\"/>\n  );\n}\n\nexport default IconExample1;\n"],"mappings":"AAAA","sourceRoot":""}

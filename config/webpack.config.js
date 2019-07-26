@@ -14,8 +14,9 @@ module.exports = (env) => {
     },
     output: {
       path: absPath('../dist'),
-      filename: '[name]_[hash:8].js',
-      chunkFilename: '[name]_[hash:8]_chunk.js',
+      // filename可以配置一个路径，来存放生成的打包文件
+      filename: 'static/js/[name]_[hash:8].js',
+      chunkFilename: 'static/js/[name]_[hash:8]_chunk.js',
       library: 'WUI', // bundle文件的名称
       // Universal Module Definition
       // universal: 普遍的，通用的
@@ -66,7 +67,7 @@ module.exports = (env) => {
               loader: 'file-loader',
               options: {
                 name: '[name]_[hash:8].[ext]',
-                outputPath: 'images/'
+                outputPath: 'static/images/'
               }
             }
           ]
@@ -100,8 +101,8 @@ module.exports = (env) => {
       new HardSourceWebpackPlugin(),
       new FriendlyErrorsWebpackPlugin(),
       new MiniCssExtractPlugin({
-        filename: '[name]_[hash:8].css',
-        chunkFilename: '[name]_[hash:8]_chunk.css'
+        filename: 'static/css/[name]_[hash:8].css',
+        chunkFilename: 'static/css/[name]_[hash:8]_chunk.css'
       })
     ],
     resolve: {
