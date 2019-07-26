@@ -1,0 +1,1 @@
+{"version":3,"file":"19_b75e7300_chunk.js","sources":["webpack://WUI/./lib/components/icon/icon.example.2.tsx"],"sourcesContent":["import React from 'react';\nimport Icon from './icon';\n\nfunction IconExample2 () {\n  return (\n    <Icon name=\"qq\"/>\n  );\n}\n\nexport default IconExample2;\n"],"mappings":"AAAA","sourceRoot":""}
