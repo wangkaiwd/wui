@@ -1,0 +1,2 @@
+(window.webpackJsonpWUI=window.webpackJsonpWUI||[]).push([[20],{28:function(a,e,c){"use strict";c.r(e);var n=c(1),t=c(0),s=c.n(t),o=c(2),r=Object(o.a)("layout-footer");e.default=function(a){var e=a.className,c=n.b(a,["className"]);return s.a.createElement("div",n.a({className:Object(o.b)(r(),e)},c),a.children)}}}]);
+//# sourceMappingURL=20_e035c49f_chunk.js.map
