@@ -1,12 +1,12 @@
 .wui-code-item {
-  &-body {
-    display: flex;
-    padding: 24px;
+  .wui-code-item-body {
     background-color: #f5f5f5;
     border-radius: 4px;
-    justify-content: center;
+    .separate {
+      margin: $space-md;
+    }
   }
-  &-code {
+  .wui-code-item-code {
     margin: 8px 0;
     .wui-card-main {
       padding: 0;
