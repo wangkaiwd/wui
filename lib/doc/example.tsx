@@ -4,13 +4,12 @@ import Content from '../components/layout/content';
 import Header from '../components/layout/header';
 import Layout from '../components/layout/layout';
 import { NavLink } from 'react-router-dom';
-import Footer from '../components/layout/footer';
 import Sider from '../components/layout/sider';
 import Icon from '../components/icon/icon';
 import routeConfigs from './route/routeConfigs';
 // import IconExample from './icon/icon.example';
 // 使用require引入文件可以避开ts的检查
-const logo = require('../assets/imgs/logo.png');
+const logo = require('../assets/imgs/logo2.png');
 
 const Example: React.FunctionComponent = (props) => {
   return (
@@ -20,7 +19,6 @@ const Example: React.FunctionComponent = (props) => {
           <div className="example-logo">
             <img src={logo} alt=""/>
           </div>
-          <h3 className="example-name">WUI</h3>
         </div>
         <div className="example-header-right">
           <a href="https://github.com/wangkaiwd/wui" target="_blank">
@@ -45,9 +43,6 @@ const Example: React.FunctionComponent = (props) => {
               {props.children}
             </div>
           </Content>
-          <Footer className="example-footer">
-            footer
-          </Footer>
         </Layout>
       </Layout>
     </Layout>
