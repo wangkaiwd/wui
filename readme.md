@@ -52,7 +52,7 @@
   ```
 
 ### 问题记录
-1. `scss`代码的书写以及层级问题：  
+#### `scss`代码的书写以及层级问题：  
 ```scss
 .wui-input {
   position: relative;
@@ -89,3 +89,24 @@
 }
 ```
 如果要使用`&`来进行省略代码的话，一定要注意编译后的嵌套结构和层级问题。
+
+处理`css`层级问题需要点击浏览器对应的样式源码位置，查看最终的编译效果更容易理解
+
+#### [`CSS`通用兄弟选择器](https://developer.mozilla.org/zh-CN/docs/Web/CSS/General_sibling_combinator)
+  
+兄弟选择符，位置无需紧邻，只需同级，`A~B`选择`A`元素**之后**所有同层级`B`元素
+> 要注意只能选择之后的兄弟元素，而不是任意位置
+
+代码示例：  
+```html
+<span>This is not red.</span>
+<p>Here is a paragraph.</p>
+<code>Here is some code.</code>
+<span>And here is a span.</span>
+```
+```css
+p ~ span {
+  color: red;
+}
+```  
+只有最后一个`span`标签的字体颜色会变红。
