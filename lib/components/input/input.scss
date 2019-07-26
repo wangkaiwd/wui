@@ -1,0 +1,20 @@
+$focus-color: #85b7d9;
+.wui-input {
+  input {
+    font-size: 14px;
+    color: $title-color;
+    padding: $space-sm $space-md;
+    border: 1px solid $border-color;
+    border-radius: $border-radius-sm;
+    outline: none;
+    &::placeholder {
+      color: lighten($text-color, 60%);
+    }
+    &:focus {
+      &::placeholder {
+        color: $text-color;
+      }
+      border-color: $focus-color;
+    }
+  }
+}
