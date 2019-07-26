@@ -83,7 +83,8 @@ module.exports = (env) => {
         inject: true,
         title: 'WUI',
         filename: 'index.html',
-        template: absPath('../example.html')
+        template: absPath('../example.html'),
+        favicon: './favicon.png'
       }),
       new AutoDllPlugin({
         inject: true, // will inject the DLL bundle to index.html

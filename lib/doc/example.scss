@@ -12,7 +12,6 @@
   font-family: "Roboto", "Helvetica", "Arial", sans-serif;;
 }
 
-$main-color: #72dfd0;
 .example {
   line-height: 1.5;
   height: 100vh;
@@ -44,11 +43,11 @@ $main-color: #72dfd0;
     margin-left: 12px;
   }
   &-logo {
-    display: inline-block;
+    display: inline-flex;
     height: 80px;
-    width: 80px;
+    width: 160px;
     vertical-align: middle;
-    object-fit: cover;
+    align-items: center;
   }
   &-sider {
     overflow: auto;
@@ -95,7 +94,7 @@ $main-color: #72dfd0;
     overflow: auto;
   }
   &-content-main {
-    padding: 16px 32px;
+    padding: 30px;
     width: 80%;
     pre {
       padding: 10px;

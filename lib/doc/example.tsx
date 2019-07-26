@@ -9,7 +9,7 @@ import Icon from '../components/icon/icon';
 import routeConfigs from './route/routeConfigs';
 // import IconExample from './icon/icon.example';
 // 使用require引入文件可以避开ts的检查
-const logo = require('../assets/imgs/logo2.png');
+const logo = require('../assets/imgs/logo.png');
 
 const Example: React.FunctionComponent = (props) => {
   return (
