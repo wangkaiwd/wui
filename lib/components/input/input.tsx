@@ -1,6 +1,7 @@
 import React from 'react';
 import classes, { classMaker } from '../../helpers/classes';
 import './input.scss';
+import Icon from '../icon/icon';
 
 interface Props extends React.InputHTMLAttributes<HTMLInputElement> {
   prefix?: string;
@@ -17,7 +18,14 @@ const Input: React.FC<Props> = (props) => {
         classes(sc('', { disabled }), className)
       }
     >
+      {
+        prefix &&
+        <div className={sc('prefix')}>
+          <Icon name={prefix}/>
+        </div>
+      }
       <input
+        className={sc('area', { 'left-icon': prefix, 'right-icon': suffix })}
         disabled={disabled}
         {...restProps}
       />

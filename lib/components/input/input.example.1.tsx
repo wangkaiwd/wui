@@ -3,7 +3,11 @@ import Input from './input';
 
 const InputExample1 = () => {
   return (
-    <Input className={'input'} placeholder={'search...'}/>
+    <div>
+      <Input className={'input'} placeholder={'search...'}/>
+      <Input placeholder={'search...'} prefix={'alipay'}/>
+      <Input placeholder={'search...'}/>
+    </div>
   );
 };
 

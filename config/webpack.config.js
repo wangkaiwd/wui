@@ -43,7 +43,7 @@ module.exports = (env) => {
             {
               loader: 'css-loader',
               options: {
-                importLoaders: 3
+                // importLoaders: 2
               }
             }, // translates CSS into CommonJS
             'postcss-loader',

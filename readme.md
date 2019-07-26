@@ -50,3 +50,42 @@
   // 添加一个显示的名字，方便在调试工具中查看
   static displayName = 'xxx'
   ```
+
+### 问题记录
+1. `scss`代码的书写以及层级问题：  
+```scss
+.wui-input {
+  position: relative;
+  &-prefix {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  .wui-input-prefix {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+}
+```
+最终编译效果：  
+```css
+.wui-input {
+  position: relative;
+}
+.wui-input-prefix {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.wui-input .wui-input-prefix {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+```
+如果要使用`&`来进行省略代码的话，一定要注意编译后的嵌套结构和层级问题。
