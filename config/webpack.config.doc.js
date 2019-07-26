@@ -6,7 +6,7 @@ const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPl
 
 module.exports = (env) => merge(base(env), {
   mode: 'production',
-  devtool: 'cheap-module-source-map',
+  devtool: 'none',
   output: {
     path: absPath('../build')
   },
