@@ -1,18 +1,15 @@
 $focus-color: #85b7d9;
 .wui-input {
+  display: inline-flex;
   position: relative;
   &.wui-input-disabled {
     opacity: 0.45;
   }
-  .wui-input-left-icon {
-    padding-left: 38px;
-  }
-  &-right-icon {
-    padding-right: 38px;
-  }
-  &-prefix {
+  &-prefix, &-suffix {
+    svg {
+      color: lighten($text-color, 60%);
+    }
     position: absolute;
-    left: 0;
     top: 50%;
     transform: translateY(-50%);
   }
@@ -27,11 +24,23 @@ $focus-color: #85b7d9;
       color: lighten($text-color, 60%);
     }
     &:focus {
-      &::placeholder {
+      &::placeholder, & ~ .wui-input-prefix svg, & ~ .wui-input-suffix svg {
         color: $text-color;
       }
       border-color: $focus-color;
     }
+  }
+  &-prefix {
+    left: 14px;
+  }
+  &-suffix {
+    right: 14px;
+  }
+  &-left-icon {
+    padding-left: 38px;
+  }
+  &-right-icon {
+    padding-right: 38px;
   }
 }
 

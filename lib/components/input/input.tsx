@@ -11,24 +11,30 @@ interface Props extends React.InputHTMLAttributes<HTMLInputElement> {
 
 const sc = classMaker('input');
 const Input: React.FC<Props> = (props) => {
-  const { className, disabled, suffix, prefix, error, ...restProps } = props;
+  const { className, disabled, suffix, prefix, error, onFocus, ...restProps } = props;
   return (
     <div
       className={
         classes(sc('', { disabled }), className)
       }
     >
+      <input
+        className={sc('area', { 'left-icon': prefix, 'right-icon': suffix })}
+        disabled={disabled}
+        {...restProps}
+      />
       {
         prefix &&
         <div className={sc('prefix')}>
           <Icon name={prefix}/>
         </div>
       }
-      <input
-        className={sc('area', { 'left-icon': prefix, 'right-icon': suffix })}
-        disabled={disabled}
-        {...restProps}
-      />
+      {
+        suffix &&
+        <div className={sc('suffix')}>
+          <Icon name={suffix}/>
+        </div>
+      }
     </div>
   );
 };

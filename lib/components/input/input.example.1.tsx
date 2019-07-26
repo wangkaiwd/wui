@@ -5,8 +5,8 @@ const InputExample1 = () => {
   return (
     <div>
       <Input className={'input'} placeholder={'search...'}/>
-      <Input placeholder={'search...'} prefix={'alipay'}/>
-      <Input placeholder={'search...'}/>
+      <Input placeholder={'search...'} prefix={'qq'}/>
+      <Input placeholder={'search...'} suffix={'alipay'}/>
     </div>
   );
 };

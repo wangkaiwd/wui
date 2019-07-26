@@ -27,7 +27,7 @@ const Card: React.FunctionComponent<Props> = (props) => {
     >
       {
         title &&
-        <header className={sc({ extra: extra ? 'extra' : false })}>
+        <header className={sc('header', { extra: extra ? 'extra' : false })}>
           <span>{title}</span>
           <span>{extra}</span>
         </header>
