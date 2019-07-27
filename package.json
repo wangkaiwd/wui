@@ -9,7 +9,7 @@
     "build:analysis": "webpack --env.MODE=analysis --config config/webpack.config.doc.js",
     "deploy": "sh deploy.sh",
     "test": "jest --config=jest.config.js --runInBand",
-    "xxx": "JEST_JUNIT_OUTPUT=./test-results/jest/results.xml jest --config=jest.config.js --runInBand"
+    "ci": "JEST_JUNIT_OUTPUT=./test-results/jest/results.xml jest --config=jest.config.js --runInBand"
   },
   "repository": "git@github.com:wangkaiwd/xxx-ui.git",
   "author": "wangkaiwd <1162486176@qq.com>",
