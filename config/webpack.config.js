@@ -19,6 +19,7 @@ module.exports = (env) => {
       chunkFilename: 'static/js/[name]_[hash:8]_chunk.js',
     },
     stats: 'errors-only',
+    devtool: 'none',
     // loader: 让webpack能够去处理那些非javascript文件
     module: {
       rules: [
