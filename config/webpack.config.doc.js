@@ -8,7 +8,8 @@ module.exports = (env) => merge(base(env), {
   mode: 'production',
   devtool: 'none',
   output: {
-    path: absPath('../build')
+    path: absPath('../build'),
+    publicPath: './'
   },
   plugins: [
     env.MODE === 'analysis' && new BundleAnalyzerPlugin()

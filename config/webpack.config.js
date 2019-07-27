@@ -10,19 +10,13 @@ const pkg = require('../package');
 module.exports = (env) => {
   return {
     entry: {
-      example: absPath('../lib/doc/index.tsx')
+      main: absPath('../lib/doc/index.tsx')
     },
     output: {
       path: absPath('../dist'),
       // filename可以配置一个路径，来存放生成的打包文件
       filename: 'static/js/[name]_[hash:8].js',
       chunkFilename: 'static/js/[name]_[hash:8]_chunk.js',
-      library: 'WUI', // bundle文件的名称
-      // Universal Module Definition
-      // universal: 普遍的，通用的
-      // amd,commonjs,umd: https://www.davidbcalhoun.com/2014/what-is-amd-commonjs-and-umd/
-      libraryTarget: 'umd',
-      publicPath: './'
     },
     stats: 'errors-only',
     // loader: 让webpack能够去处理那些非javascript文件
@@ -81,7 +75,7 @@ module.exports = (env) => {
     },
     plugins: [
       new CleanWebpackPlugin(),
-      new HtmlWebpackPlugin({
+      env.MODE !== 'prod' && new HtmlWebpackPlugin({
         inject: true,
         title: 'WUI',
         filename: 'index.html',
@@ -104,7 +98,7 @@ module.exports = (env) => {
         filename: 'static/css/[name]_[hash:8].css',
         chunkFilename: 'static/css/[name]_[hash:8]_chunk.css'
       })
-    ],
+    ].filter(Boolean),
     resolve: {
       extensions: ['.js', '.json', '.ts', '.tsx']
     },
