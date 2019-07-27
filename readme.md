@@ -110,3 +110,52 @@ p ~ span {
 }
 ```  
 只有最后一个`span`标签的字体颜色会变红。
+
+### `git`相关知识
+
+#### `git push`
+
+`git push`命令的语法：  
+```text
+git push <远程主机名> <本地分支名>:<远程分支名>
+```
+
+* 分支推送顺序的写法： <来源地>:<目的地>
+* 如果省略远程分支名，则将本地分支推送至与之存在追踪关系的远程分支，如果该分支不存在，则会被新建
+```shell script
+# 将本地的master分支推送到origin主机的master分支，如果origin主机的master分支不存在，则会被新建
+# git push <远程主机名:origin> <来源地:master>:<目的地:master>
+git push origin master
+```
+* 如果省略本地分支名，则表示删除指定的远程分支
+```shell script
+# 删除origin主机的master分支
+git push origin :master
+# 等同于
+git push origin --delete master
+```
+* 使用`-u`选项指定一个默认主机
+```shell script
+# 将本地的master分支推送到origin主机的master分支，同时指定origin为默认主机
+git push -u origin master
+```
+* 如果当前分支只有一个追踪分支，那么主机名也可以省略
+```shell script
+# 推送当前分支到默认主机
+git push
+```
+* 强制推送，会导致远程主机上更新的版本被覆盖
+```shell script
+git push --force origin
+# 简写
+git push -f origin
+```
+* 推送标签(`tag`)到远程仓库
+```shell script
+git push origin --tags
+```
+
+综合以上知识点，下面这段代码的含义如下：  
+![](https://raw.githubusercontent.com/wangkaiwd/drawing-bed/master/wui-git-push.png)
+
+强制将本地`master`分支推送到`git@github.com:wangkaiwd/wui.git`的`gh-pages`分支。
