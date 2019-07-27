@@ -1,7 +1,11 @@
 {
-  "name": "xxx-ui",
-  "version": "1.0.0",
-  "main": "./lib/index.js",
+  "name": "xxx-ui-88888",
+  "version": "0.0.1",
+  "main": "./dist/main.js",
+  "types": "./dist/lib/index.d.ts",
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "start": "webpack-dev-server --env.MODE=dev --config config/webpack.config.dev.js",
     "build:prod": "webpack --env.MODE=prod --config config/webpack.config.prod.js",
