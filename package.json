@@ -8,7 +8,8 @@
     "build:doc": "webpack --env.MODE=doc --config config/webpack.config.doc.js",
     "build:analysis": "webpack --env.MODE=analysis --config config/webpack.config.doc.js",
     "deploy": "sh deploy.sh",
-    "test": "jest --config=jest.config.js --runInBand"
+    "test": "jest --config=jest.config.js --runInBand",
+    "xxx": "JEST_JUNIT_OUTPUT=./test-results/jest/results.xml jest --config=jest.config.js --runInBand"
   },
   "repository": "git@github.com:wangkaiwd/xxx-ui.git",
   "author": "wangkaiwd <1162486176@qq.com>",
@@ -33,6 +34,7 @@
     "hard-source-webpack-plugin": "^0.13.1",
     "html-webpack-plugin": "^3.2.0",
     "jest": "^24.8.0",
+    "jest-junit": "^7.0.0",
     "mini-css-extract-plugin": "^0.8.0",
     "node-sass": "^4.12.0",
     "postcss-loader": "^3.0.0",
