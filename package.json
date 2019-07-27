@@ -7,6 +7,7 @@
     "build:prod": "webpack --env.MODE=prod --config config/webpack.config.prod.js",
     "build:doc": "webpack --env.MODE=doc --config config/webpack.config.doc.js",
     "build:analysis": "webpack --env.MODE=analysis --config config/webpack.config.doc.js",
+    "deploy": "sh deploy.sh",
     "test": "jest --config=jest.config.js --runInBand"
   },
   "repository": "git@github.com:wangkaiwd/xxx-ui.git",

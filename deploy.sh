@@ -4,7 +4,7 @@
 set -e
 
 # 构建
-yarn build doc
+yarn build:doc
 
 # cd 到构建输出的目录下
 cd build
@@ -20,4 +20,4 @@ git commit -m 'deploy'
 git push -f git@github.com:wangkaiwd/wui.git master:gh-pages
 
 cd -
-rm -rf build &; rm -rf dist &;
+rm -rf build & rm -rf dist
