@@ -159,3 +159,32 @@ git push origin --tags
 ![](https://raw.githubusercontent.com/wangkaiwd/drawing-bed/master/wui-git-push.png)
 
 强制将本地`master`分支推送到`git@github.com:wangkaiwd/wui.git`的`gh-pages`分支。
+
+### 发布到`npm`
+项目中使用`yarn`进行代码的发布，[官方文档](https://yarnpkg.com/lang/en/docs/publishing-a-package/#)
+
+在发布前需要修改`webpack`的配置以及`package.json`的配置,接下来我们分别介绍配置的改动项
+
+* `webpack`
+由于我们的项目要分享给其它开发者使用，是一个库文件，所以在出口项中要添加`targetLibrary`选项：  
+```js
+output: {
+  filename: '[name].js',
+  libraryTarget: 'umd',
+  library: 'WUI'
+}
+```
+
+* `package.json`
+
+在`package.json`中我们要有以下几项： 
+* `main.js`: 项目的入口文件，可以通过直接引用目录来使用依赖
+* `files`: `npm`中需要上传的文件，不设置会将项目中除`.gitignore`忽略的文件都上传到`npm`中，设置之后只会将设置的内容，以及`license`、`readme.md`、`package.json`上传到`npm`中
+* `types`: 在写`TypeScript`的项目中会用到，告诉我们类型声明文件的位置
+
+当准备工作做好之后，我们开始进行发布工作：  
+* 首先去`npm`官网注册账号
+* 执行`yarn login`登录自己注册的账号
+* 执行`yarn publish`,第一次执行的话需要输入密码，之后就不用了。每次执行都需要指定版本号，有点烦
+
+这里如果没有错误信息就会上传成功了，其它开发者可以直接`yarn add`然后在项目中使用。
