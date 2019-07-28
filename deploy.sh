@@ -20,4 +20,4 @@ git commit -m 'deploy'
 git push -f git@github.com:wangkaiwd/wui.git master:gh-pages
 
 cd -
-rm -rf build & rm -rf dist
+rm -rf build dist

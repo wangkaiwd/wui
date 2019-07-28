@@ -10,11 +10,11 @@ module.exports = (env) => merge(base(env), {
   },
   output: {
     filename: '[name].js',
-    library: 'WUI', // bundle文件的名称
+    // library: 'WUI', // bundle文件的名称
     // Universal Module Definition
     // universal: 普遍的，通用的
     // amd,commonjs,umd: https://www.davidbcalhoun.com/2014/what-is-amd-commonjs-and-umd/
-    libraryTarget: 'umd',
+    libraryTarget: 'umd'
   },
   // external: 外面的，外部的；表面上的
   // 提供了从输出的bundle中排除依赖的方法。
