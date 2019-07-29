@@ -5,10 +5,11 @@ import Button from '../button/button';
 const CardExample1 = () => {
   return (
     <Card
-      title={'标题'}
+      title={'Input'}
       border
       hoverable
       extra={<Button color={'primary'}>extra button</Button>}
+      meta={'标准Input组件'}
     >
       <ul>
         <li> Card content</li>

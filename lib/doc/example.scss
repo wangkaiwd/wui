@@ -1,14 +1,9 @@
 @import "../assets/styles/reset";
 
-[class^=wui] {
-  box-sizing: border-box;
+body {
   line-height: 1.15;
   font-size: 14px;
   color: $text-color;
-  &::before,
-  &::after {
-    box-sizing: border-box;
-  }
   font-family: "Roboto", "Helvetica", "Arial", sans-serif;;
 }
 
