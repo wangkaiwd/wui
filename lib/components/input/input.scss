@@ -1,6 +1,10 @@
 $focus-color: #85b7d9;
+$error-text-color: #9f3a38;
+$error-border-color: #e0b4b4;
+$error-background-color: #fff6f6;
 .wui-input {
   display: inline-flex;
+  align-items: center;
   position: relative;
   &.wui-input-disabled {
     opacity: 0.45;
@@ -29,6 +33,20 @@ $focus-color: #85b7d9;
       }
       border-color: $focus-color;
     }
+    &.wui-input-error {
+      background-color: $error-background-color;
+      border-color: $error-border-color;
+      color: $error-text-color;
+      &::placeholder {
+        color: lighten($error-text-color, 30%);
+      }
+      &:focus {
+        &::placeholder, & ~ .wui-input-prefix svg, & ~ .wui-input-suffix svg {
+          color: lighten($error-text-color, 16%);
+        }
+        border-color: $error-border-color;
+      }
+    }
   }
   &-prefix {
     left: 14px;
@@ -41,6 +59,16 @@ $focus-color: #85b7d9;
   }
   &-right-icon {
     padding-right: 38px;
+  }
+  &-error-msg {
+    display: flex;
+    align-items: center;
+    margin-left: $space-xs;
+    color: $error-text-color;
+    font-size: $font-sm;
+    svg {
+      color: $error-text-color;
+    }
   }
 }
 
