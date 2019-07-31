@@ -41,6 +41,7 @@
     "acceptance-tests",
     "webpack",
     "jest",
+    "__tests__",
     "test/setupTests.ts",
     "*.js"
   ]

@@ -1,0 +1,38 @@
+.wui-dialog {
+  &-mask {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, .85);
+  }
+  &-content {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: $white;
+    z-index: 1;
+    min-width: 600px;
+    border-radius: $border-radius-md;
+  }
+  &-header {
+    color: $title-color;
+    font-size: $font-xl;
+    padding: $space-lg $space-xl;
+    border-bottom: 1px solid $border-color;
+  }
+  &-main {
+    padding: $space-xl;
+  }
+  &-footer {
+    display: flex;
+    justify-content: flex-end;
+    padding: $space-md $space-xl;
+    border-top: 1px solid $border-color;
+    .wui-button:first-child {
+      margin-right: $space-md;
+    }
+  }
+}

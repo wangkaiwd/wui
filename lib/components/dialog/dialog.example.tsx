@@ -1,11 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Dialog from './dialog';
+import Button from '@/components/button/button';
 
 const DialogExample = () => {
+  const [visible, setVisible] = useState(false);
   return (
     <div>
-      <Dialog visible={false}>
-        123
+      <Button onClick={() => setVisible(true)}>click</Button>
+      <Dialog visible={visible}>
+        Are you sure you want to delete your account
       </Dialog>
     </div>
   );
