@@ -11,6 +11,7 @@ const DialogExample = () => {
         visible={visible}
         onOk={() => setVisible(false)}
         onCancel={() => setVisible(false)}
+        title={'Delete Your Account'}
       >
         Are you sure you want to delete your account
       </Dialog>

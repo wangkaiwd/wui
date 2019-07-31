@@ -7,18 +7,22 @@ import Button from '@/components/button/button';
 interface Props extends React.HTMLAttributes<HTMLDivElement> {
   visible: boolean;
   onOk?: () => void;
-  onCancel?: () => void
+  onCancel?: () => void;
+  title?: string
 }
 
 const sc = classMaker('dialog');
 const Dialog: React.FunctionComponent<Props> = (props) => {
-  const { visible, className, onOk, onCancel, ...restProps } = props;
+  const { visible, className, onOk, onCancel, title, ...restProps } = props;
   const template = (
     <Fragment>
       <div className={classes(sc('content'), className)} {...restProps}>
-        <header className={sc('header')}>
-          header
-        </header>
+        {
+          title &&
+          <header className={sc('header')}>
+            {title}
+          </header>
+        }
         <main className={sc('main')}>
           {props.children}
         </main>
