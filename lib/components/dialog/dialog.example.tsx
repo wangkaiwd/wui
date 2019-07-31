@@ -7,7 +7,11 @@ const DialogExample = () => {
   return (
     <div>
       <Button onClick={() => setVisible(true)}>click</Button>
-      <Dialog visible={visible}>
+      <Dialog
+        visible={visible}
+        onOk={() => setVisible(false)}
+        onCancel={() => setVisible(false)}
+      >
         Are you sure you want to delete your account
       </Dialog>
     </div>
