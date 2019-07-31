@@ -40,7 +40,7 @@ module.exports = (env) => {
             {
               loader: 'css-loader',
               options: {
-                // importLoaders: 2
+                importLoaders: 2
               }
             }, // translates CSS into CommonJS
             'postcss-loader',
@@ -56,7 +56,6 @@ module.exports = (env) => {
         },
         {
           test: /\.(png|jpg|jpeg|gif)$/,
-          // use: ['file-loader'],
           use: [
             {
               loader: 'file-loader',
@@ -101,7 +100,10 @@ module.exports = (env) => {
       })
     ].filter(Boolean),
     resolve: {
-      extensions: ['.js', '.json', '.ts', '.tsx']
+      alias: {
+        '@': absPath('../lib')
+      },
+      extensions: ['.js', '.ts', '.tsx']
     },
     performance: {
       hints: false
