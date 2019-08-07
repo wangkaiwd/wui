@@ -10,8 +10,15 @@ const DialogExample = () => {
   const onCancel = () => {
     setVisible(false);
   };
+  const onClickAlert = () => {
+    Dialog.alert({
+      title: 'Alert',
+      content: 'alertContent'
+    });
+  };
   return (
     <div>
+      <h2>demo1</h2>
       <Button onClick={() => setVisible(true)}>click</Button>
       <Dialog
         visible={visible}
@@ -25,6 +32,8 @@ const DialogExample = () => {
       >
         Are you sure you want to delete your account
       </Dialog>
+      <h2>demo2</h2>
+      <Button onClick={onClickAlert}>click2</Button>
     </div>
   );
 };
