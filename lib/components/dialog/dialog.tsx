@@ -124,8 +124,47 @@ Dialog.alert = ({
   reRenderDialog(true);
 
 };
-Dialog.confirm = (options) => {
-
+Dialog.confirm = ({ title, content, onCancel, onOk }) => {
+  const reRenderDialog = (visible: boolean,) => {
+    let container: HTMLDivElement;
+    if (visible) {
+      container = document.createElement('div');
+      container.classList.add('dialog-placeholder');
+      document.body.appendChild(container);
+    } else {
+      container = document.querySelector<HTMLDivElement>('.dialog-placeholder')!;
+    }
+    const component = (
+      <Dialog
+        buttons={buttons}
+        visible={visible}
+        title={title}
+        onCancel={close}
+        onOk={onOk}
+      >
+        {content}
+      </Dialog>
+    );
+    ReactDOM.render(component, container);
+    return container;
+  };
+  const close = () => {
+    const container = reRenderDialog(false);
+    container.remove();
+    ReactDOM.unmountComponentAtNode(container);
+  };
+  const onClickClose = () => {
+    close();
+    onCancel && onCancel();
+  };
+  const onClickOk = () => {
+    close();
+    onOk && onOk();
+  };
+  const buttons = [
+    <Button color={'danger'} onClick={onClickClose}>取消</Button>,
+    <Button color={'primary'} onClick={onClickOk}>确认</Button>
+  ];
 };
 Dialog.modal = (options) => {
 
