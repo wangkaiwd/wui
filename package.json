@@ -13,7 +13,8 @@
     "build:analysis": "webpack --env.MODE=analysis --config config/webpack.config.doc.js",
     "deploy": "sh deploy.sh",
     "test": "jest --config=jest.config.js --runInBand",
-    "ci": "JEST_JUNIT_OUTPUT=./test-results/jest/results.xml jest --config=jest.config.js --runInBand"
+    "ci": "JEST_JUNIT_OUTPUT=./test-results/jest/results.xml jest --config=jest.config.js --runInBand",
+    "clear": "rm -rf node_modules/.cache"
   },
   "repository": "git@github.com:wangkaiwd/wui.git",
   "author": "wangkaiwd <1162486176@qq.com>",

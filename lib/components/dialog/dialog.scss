@@ -25,6 +25,8 @@
   }
   &-main {
     padding: $space-xl;
+    max-height: 80vh;
+    overflow: auto;
   }
   &-footer {
     display: flex;
@@ -34,5 +36,12 @@
     .wui-button:first-child {
       margin-right: $space-md;
     }
+  }
+  &-close {
+    position: absolute;
+    top: $space-sm;
+    right: $space-sm;
+    font-size: 28px;
+    cursor: pointer;
   }
 }
