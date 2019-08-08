@@ -110,7 +110,11 @@ Dialog.confirm = ({ title, content, onCancel, onOk }) => {
 };
 Dialog.modal = ({ title, content, buttons }) => {
   const close: () => void = () => {
-    // React.cloneElement
+    // React.cloneElement：以element元素为样板克隆并返回新的React元素。
+    // 返回元素的props将是新的props与原始元素的props浅层合并后的结果
+    // 新的子元素将取代现有的子元素
+    // 几乎相当于：
+    //  <element.type {...element.props} {...props}>{children}</element.type>
     ReactDOM.render(React.cloneElement(component, { visible: false }), container);
     container.remove();
     ReactDOM.unmountComponentAtNode(container);
