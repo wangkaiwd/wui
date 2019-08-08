@@ -71,8 +71,6 @@ const Dialog: React.FunctionComponent<Props> & Dialog = (props) => {
         {
           buttons && buttons.length > 0 &&
           <footer className={sc('footer')}>
-            {/*<Button className={sc('no')} onClick={onOk} color={'danger'}>No</Button>*/}
-            {/*<Button className={sc('yes')} onClick={onCancel} color={'primary'}>Yes</Button>*/}
             {buttons}
           </footer>
         }
