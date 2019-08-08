@@ -10,24 +10,29 @@ interface Props extends React.HTMLAttributes<HTMLDivElement> {
   onOk?: () => void;
   onCancel?: () => void;
   title: string;
-  buttons?: React.ReactNode[]
+  buttons?: React.ReactElement[]
 }
 
 interface ModalProps {
   title: string;
   content: React.ReactNode;
+  buttons?: React.ReactElement[];
 }
 
-interface AlertProps extends ModalProps {
-  onCancel?: () => void
+interface AlertProps {
+  title: string;
+  content: React.ReactNode;
 }
 
-interface ConfirmProps extends AlertProps {
-  onOk?: () => void
+interface ConfirmProps {
+  title: string;
+  content: React.ReactNode;
+  onCancel?: () => void;
+  onOk?: () => void;
 }
 
 interface Dialog {
-  modal (options: ModalProps): void
+  modal (options: ModalProps): () => void;
 
   alert (options: AlertProps): void;
 
@@ -86,87 +91,43 @@ Dialog.alert = ({
   title,
   content
 }) => {
-  // 我们无法改变visible,只能重新渲染一个visible为false的Dialog组件
-  const reRenderDialog = (visible: boolean) => {
-    let container: HTMLDivElement;
-    if (visible) {
-      container = document.createElement('div');
-      container.classList.add('dialog-placeholder');
-      document.body.appendChild(container);
-    } else {
-      container = document.querySelector<HTMLDivElement>('.dialog-placeholder')!;
-    }
-    const component = (
-      <Dialog
-        buttons={buttons}
-        visible={visible}
-        title={title}
-        onCancel={close}
-      >
-        {content}
-      </Dialog>
-    );
-    ReactDOM.render(component, container);
-    return container;
-  };
-  const close = () => {
-    const container = reRenderDialog(false);
-    // 从DOM中卸载组件，会将其事件处理器(event handlers)和state一并清除
-    // 如果指定容器上没有对应已挂载的组件，这个函数什么也不会做
-    // 如果组件被移除将会返回true,如果没有组件可被移除将会返回false
-    ReactDOM.unmountComponentAtNode(container);
-    // 将占位div从DOM中移除
-    container.remove();
-  };
-  const buttons = [
-    <Button color={'primary'} onClick={close}>取消</Button>
-  ];
-  reRenderDialog(true);
-
+  Dialog.modal({ title, content });
 };
 Dialog.confirm = ({ title, content, onCancel, onOk }) => {
-  const reRenderDialog = (visible: boolean,) => {
-    let container: HTMLDivElement;
-    if (visible) {
-      container = document.createElement('div');
-      container.classList.add('dialog-placeholder');
-      document.body.appendChild(container);
-    } else {
-      container = document.querySelector<HTMLDivElement>('.dialog-placeholder')!;
-    }
-    const component = (
-      <Dialog
-        buttons={buttons}
-        visible={visible}
-        title={title}
-        onCancel={close}
-        onOk={onOk}
-      >
-        {content}
-      </Dialog>
-    );
-    ReactDOM.render(component, container);
-    return container;
+  const onClickCancel = () => {
+    onCancel && onCancel();
+    closeModal();
   };
-  const close = () => {
-    const container = reRenderDialog(false);
+  const onClickOk = () => {
+    onOk && onOk();
+    closeModal();
+  };
+  const buttons = [
+    <Button onClick={onClickCancel} color={'danger'}>取消</Button>,
+    <Button onClick={onClickOk} color={'primary'}>确认</Button>
+  ];
+  const closeModal = Dialog.modal({ title, content, buttons });
+};
+Dialog.modal = ({ title, content, buttons }) => {
+  const close: () => void = () => {
+    // React.cloneElement
+    ReactDOM.render(React.cloneElement(component, { visible: false }), container);
     container.remove();
     ReactDOM.unmountComponentAtNode(container);
   };
-  const onClickClose = () => {
-    close();
-    onCancel && onCancel();
+  const component = (
+    <Dialog title={title} onCancel={close} visible={true} buttons={buttons}>
+      {content}
+    </Dialog>
+  );
+  const renderDialog = () => {
+    const container = document.createElement('div');
+    container.classList.add('dialog-placeholder');
+    document.body.appendChild(container);
+    ReactDOM.render(component, container);
+    return container;
   };
-  const onClickOk = () => {
-    close();
-    onOk && onOk();
-  };
-  const buttons = [
-    <Button color={'danger'} onClick={onClickClose}>取消</Button>,
-    <Button color={'primary'} onClick={onClickOk}>确认</Button>
-  ];
-};
-Dialog.modal = (options) => {
-
+  const container = renderDialog();
+  return close;
 };
 export default Dialog;

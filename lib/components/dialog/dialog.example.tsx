@@ -16,6 +16,25 @@ const DialogExample = () => {
       content: 'alertContent'
     });
   };
+  const onClickConfirm = () => {
+    Dialog.confirm({
+      title: 'Confirm',
+      content: 'ConfirmContent'
+    });
+  };
+  const onClickModal = () => {
+    const content = (
+      <div>
+        <p>I am content</p>
+        <Button onClick={() => closeModal()}>取消</Button>
+      </div>
+    );
+
+    const closeModal = Dialog.modal({
+      title: 'Modal',
+      content
+    });
+  };
   return (
     <div>
       <h2>demo1</h2>
@@ -34,6 +53,12 @@ const DialogExample = () => {
       </Dialog>
       <h2>demo2</h2>
       <Button onClick={onClickAlert}>click2</Button>
+
+      <h2>demo3</h2>
+      <Button onClick={onClickConfirm}>click3</Button>
+
+      <h2>demo4</h2>
+      <Button onClick={onClickModal}>click4</Button>
     </div>
   );
 };
