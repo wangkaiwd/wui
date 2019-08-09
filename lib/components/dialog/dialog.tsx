@@ -1,118 +1,135 @@
 import React, { Fragment } from 'react';
-import { classMaker } from '../../helpers/classes';
-import './dialog.scss';
-import Icon from '../icon/icon';
 import ReactDOM, { createPortal } from 'react-dom';
-import Button from '../button/button';
+import './dialog.scss';
+import classes, { classMaker } from '@/helpers/classes';
+import Icon from '@/components/icon/icon';
+import Button from '@/components/button/button';
 
-// 这里有一个问题： 接口定义的属性无法很好地和默认属性结合
-interface DialogProps {
-  visible: boolean,
-  buttons?: Array<React.ReactElement>,
-  onClose: React.MouseEventHandler,
-  maskClosable?: boolean
+interface Props extends React.HTMLAttributes<HTMLDivElement> {
+  visible: boolean;
+  onOk?: () => void;
+  onCancel?: () => void;
+  title: string;
+  buttons?: React.ReactElement[]
 }
 
-const scopeClass = classMaker('dialog');
-const sc = scopeClass;
-const Dialog: React.FunctionComponent<DialogProps> = (props) => {
-  const isShowFooter: boolean = !!(props.buttons && props.buttons.length > 0);
-  const onClickMask: React.MouseEventHandler = (e) => {
-    if (props.maskClosable) { // 这里不会影响到代码出错
-      props.onClose(e);
+interface ModalProps {
+  title: string;
+  content: React.ReactNode;
+  buttons?: React.ReactElement[];
+}
+
+interface AlertProps {
+  title: string;
+  content: React.ReactNode;
+}
+
+interface ConfirmProps {
+  title: string;
+  content: React.ReactNode;
+  onCancel?: () => void;
+  onOk?: () => void;
+}
+
+interface Dialog {
+  modal (options: ModalProps): () => void;
+
+  alert (options: AlertProps): void;
+
+  confirm (options: ConfirmProps): void;
+}
+
+const sc = classMaker('dialog');
+const Dialog: React.FunctionComponent<Props> & Dialog = (props) => {
+  const {
+    visible,
+    className,
+    onOk,
+    onCancel,
+    title,
+    buttons,
+    ...restProps
+  } = props;
+
+  const onClose = () => {
+    if (onCancel) {
+      onCancel();
     }
   };
   const template = (
     <Fragment>
-      <div className={sc()}>
-        <div className={sc('close')} onClick={props.onClose}>
-          <Icon className={sc('close-icon')} name="close"/>
-        </div>
-        <header className={sc('header')}>title</header>
-        <main className={sc('content')}>
+      <div className={classes(sc('content'), className)} {...restProps}>
+        {
+          title &&
+          <header className={sc('header')}>
+            {title}
+          </header>
+        }
+        <main className={sc('main')}>
           {props.children}
         </main>
-        {isShowFooter &&
-        <footer className={sc('footer')}>
-          {props.buttons && props.buttons.map((button, i) =>
-            React.cloneElement(button, { key: i })
-          )}
-        </footer>}
+        {
+          buttons && buttons.length > 0 &&
+          <footer className={sc('footer')}>
+            {buttons}
+          </footer>
+        }
+
+        <div className={sc('close')} onClick={onClose}>
+          <Icon name={'close'}/>
+        </div>
       </div>
-      <div className={sc('mask')} onClick={onClickMask}></div>
+      <div className={sc('mask')}/>
     </Fragment>
   );
-  return props.visible ?
-    createPortal(template, document.body) :
-    null;
+  return visible ? createPortal(template, document.body) : null;
 };
-Dialog.defaultProps = {
-  maskClosable: true,
-  // onClose: (e) => {
-  // }
+
+Dialog.alert = ({
+  title,
+  content
+}) => {
+  Dialog.modal({ title, content });
 };
-export default Dialog;
-const alert = (content: string) => {
-  return modal(content);
-};
-const confirm = (content: string, onOk?: () => void, onCancel?: () => void) => {
-  const onClickOk = () => {
-    onClose();
-    onOk && onOk();
-  };
+Dialog.confirm = ({ title, content, onCancel, onOk }) => {
   const onClickCancel = () => {
-    onClose();
     onCancel && onCancel();
+    closeModal();
   };
-  // confirm的buttons我们可以自己帮用户写好
+  const onClickOk = () => {
+    onOk && onOk();
+    closeModal();
+  };
   const buttons = [
-    <Button onClick={onClickOk}>ok</Button>,
-    <Button onClick={onClickCancel}>cancel</Button>
+    <Button onClick={onClickCancel} color={'danger'}>取消</Button>,
+    <Button onClick={onClickOk} color={'primary'}>确认</Button>
   ];
-  const onClose = modal(content, buttons, onClickCancel);
+  const closeModal = Dialog.modal({ title, content, buttons });
 };
-const modal = (content: React.ReactNode, buttons?: React.ReactElement[], afterClose?: () => void) => {
-  const onClose = () => {
+Dialog.modal = ({ title, content, buttons }) => {
+  const close: () => void = () => {
+    // React.cloneElement：以element元素为样板克隆并返回新的React元素。
+    // 返回元素的props将是新的props与原始元素的props浅层合并后的结果
+    // 新的子元素将取代现有的子元素
+    // 几乎相当于：
+    //  <element.type {...element.props} {...props}>{children}</element.type>
     ReactDOM.render(React.cloneElement(component, { visible: false }), container);
-    ReactDOM.unmountComponentAtNode(container);
     container.remove();
+    ReactDOM.unmountComponentAtNode(container);
   };
+  const component = (
+    <Dialog title={title} onCancel={close} visible={true} buttons={buttons}>
+      {content}
+    </Dialog>
+  );
   const renderDialog = () => {
     const container = document.createElement('div');
+    container.classList.add('dialog-placeholder');
     document.body.appendChild(container);
     ReactDOM.render(component, container);
     return container;
   };
-  const onClickIcon = () => {
-    onClose();
-    afterClose && afterClose();
-  };
-  const component = (
-    <Dialog
-      onClose={onClickIcon}
-      visible={true}
-      buttons={buttons}
-    >
-      {content}
-    </Dialog>
-  );
   const container = renderDialog();
-  return onClose;
+  return close;
 };
-export { alert, confirm, modal };
-// 以element元素为样板克隆并返回新的React元素。返回元素的props是将新的props与原始元素的props浅层合并后的结果。
-// 新的子元素将取代现有的子元素，而来自原始元素的key和ref将被保留
-// React.cloneElement(element,[props],[...children])
-// ------
-// ReactDOM.createPortal(child,container)：将子节点渲染到存在于父组件以外的DOM节点的优秀的方案
-// 参数1：任何可渲染的React子元素：元素，字符串或Fragment
-// 参数2：DOM元素
-// ------
-// ReactDOM.render(element,container,[,callback])
-// 在提供的container里渲染一个React元素，并返回对该组件的引用
-// 如果React元素之前已经在container里渲染过，这将会对其执行更新操作，并仅会在必要时改变DOM以映射最新的React元素
-// ------
-// ReactDOM.unmountComponentAtNode()
-// 从DOM中卸载组件，会将其事件处理器和state一并清除。如果组件被移除将返回true,如果没有组件可被移除将会返回false。如果指定容器
-// 上没有对应已挂载的组件，这个函数什么也不会做。
-
+export default Dialog;

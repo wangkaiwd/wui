@@ -1,67 +1,72 @@
-import React, {useState} from 'react';
-import Dialog, {alert, confirm, modal} from './dialog';
-import Button from '../button/button';
+import React, { useState } from 'react';
+import Dialog from './dialog';
+import Button from '@/components/button/button';
 
-const DialogExample: React.FunctionComponent = (props) => {
-  const [x, setX] = useState();
-  const onClose = () => setX(false);
+const DialogExample = () => {
+  const [visible, setVisible] = useState(false);
   const onOk = () => {
-    console.log('ok');
+    setVisible(true);
   };
   const onCancel = () => {
-    console.log('cancel');
+    setVisible(false);
+  };
+  const onClickAlert = () => {
+    Dialog.alert({
+      title: 'Alert',
+      content: 'alertContent'
+    });
+  };
+  const onClickConfirm = () => {
+    Dialog.confirm({
+      title: 'Confirm',
+      content: 'ConfirmContent'
+    });
   };
   const onClickModal = () => {
-    const modalHtml = (
+    const content = (
       <div>
-        <h3>I am modal</h3>
-        <Button onClick={() => closeModal()}>ok</Button>
-        <Button onClick={() => closeModal()}>cancel</Button>
+        <p>I am content</p>
+        <Button onClick={() => closeModal()}>取消</Button>
       </div>
     );
-    const closeModal = modal(modalHtml);
+
+    const closeModal = Dialog.modal({
+      title: 'Modal',
+      content
+    });
   };
   return (
     <div>
-      <div>
-        <h3>example 1</h3>
-        {/*react只能通过自己来更新state的状态，而vue这里可以使用.sync语法糖进行简写*/}
-        <Button onClick={() => setX(true)}>click me</Button>
-        <Dialog
-          visible={x}
-          onClose={onClose}
-          buttons={
-            [
-              <Button onClick={() => setX(false)}>1</Button>,
-              <Button onClick={() => setX(false)}>2</Button>
-            ]
-          }
-        >
-          hi
-        </Dialog>
-      </div>
-      <div>
-        <h3>example 2</h3>
-        <Button onClick={() => alert('1')}>alert me</Button>
-      </div>
-      <div>
-        <h3>example 3</h3>
-        <Button onClick={() => confirm('confirm', onOk, onCancel)}>
-          confirm me
-        </Button>
-      </div>
-      <div>
-        <h3>example 5</h3>
-        {/*
-          这里由于要自己写html来实现一个modal，由于没有传入visible,那么我们没有办法去关闭dialog
+      <h2>demo1</h2>
+      <Button onClick={() => setVisible(true)}>click</Button>
+      <Dialog
+        visible={visible}
+        onOk={onOk}
+        onCancel={onCancel}
+        title={'Delete Your Account'}
+        buttons={[
+          <Button color={'danger'} onClick={onCancel}>No</Button>,
+          <Button color={'primary'} onClick={onCancel}>Yes</Button>
+        ]}
+      >
+        Are you sure you want to delete your account
+      </Dialog>
+      <h2>demo2</h2>
+      <Button onClick={onClickAlert}>click2</Button>
 
-          抽象：要在组件外面调用组件里的api
-        */}
-        <Button onClick={onClickModal}>
-          modal me
-        </Button>
-      </div>
+      <h2>demo3</h2>
+      <Button onClick={onClickConfirm}>click3</Button>
+
+      <h2>demo4</h2>
+      <Button onClick={onClickModal}>click4</Button>
     </div>
   );
 };
+
 export default DialogExample;
+// 使用方式分析：
+//  1. 比较繁琐的组件使用方式
+//  2. 快捷使用方式(直接通过函数来进行调用)：
+//      a. Dialog.alert({title:'xxx',content: 'xxx'}) , 展示效果  标题，内容，关闭图标， 取消按钮
+//      b. Dialog.confirm({title:'xxx',content:'xxx',onOk,onCancel}) 在alert的基础上多了确认按钮
+//      c. Dialog({title:'xxx',content:'xxx'}) 在alert上少了取消按钮，需要用户全部自定义

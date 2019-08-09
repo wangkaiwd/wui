@@ -1,14 +1,9 @@
 @import "../assets/styles/reset";
 
-[class^=wui] {
-  box-sizing: border-box;
+body {
   line-height: 1.15;
   font-size: 14px;
   color: $text-color;
-  &::before,
-  &::after {
-    box-sizing: border-box;
-  }
   font-family: "Roboto", "Helvetica", "Arial", sans-serif;;
 }
 
@@ -52,12 +47,13 @@
   &-sider {
     overflow: auto;
     width: 16%;
+    min-width: 200px;
     margin: 32px 0;
     border-right: 1px solid #eeeeee;
     color: #616367;
     line-height: 1.6;
     a {
-      padding: 6px 24px 6px 32px;
+      padding: 8px 24px 8px 32px;
       display: block;
       font-size: 14px;
       &:hover {

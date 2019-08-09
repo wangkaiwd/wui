@@ -1,56 +1,47 @@
 .wui-dialog {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  width: 30em;
-  background-color: white;
-  z-index: 2;
-  transform: translate(-50%, -50%);
-  border-radius: 4px;
-  &-close {
-    position: absolute;
-    bottom: 100%;
-    left: 100%;
-    width: 2em;
-    height: 2em;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: pink;
-    transform: translate(-50%, 50%);
-  }
-  &-close-icon {
-    font-size: 26px;
-  }
-  &-header {
-    font-size: 20px;
-    border-bottom: 1px solid #ccc;
-    padding: 8px 16px;
-  }
-  &-content {
-    padding: 8px 16px;
-    min-height: 10em;
-  }
-  &-footer {
-    text-align: right;
-    padding: 8px 16px;
-    border-top: 1px solid #ccc;
-  }
   &-mask {
     position: fixed;
-    left: 0;
     top: 0;
+    left: 0;
     right: 0;
     bottom: 0;
-    background-color: fade_out(black, 0.5);
+    background-color: rgba(0, 0, 0, .85);
   }
-  button {
-    &:first-child {
-      margin-right: 8px;
+  &-content {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: $white;
+    z-index: 1;
+    min-width: 50vw;
+    border-radius: $border-radius-md;
+  }
+  &-header {
+    color: $title-color;
+    font-size: $font-xl;
+    padding: $space-lg $space-xl;
+    border-bottom: 1px solid $border-color;
+  }
+  &-main {
+    padding: $space-xl;
+    max-height: 80vh;
+    overflow: auto;
+  }
+  &-footer {
+    display: flex;
+    justify-content: flex-end;
+    padding: $space-md $space-xl;
+    border-top: 1px solid $border-color;
+    .wui-button:last-child {
+      margin-left: $space-md;
     }
+  }
+  &-close {
+    position: absolute;
+    top: $space-sm;
+    right: $space-sm;
+    font-size: 28px;
     cursor: pointer;
-    height: 32px;
-    width: 4em;
   }
 }

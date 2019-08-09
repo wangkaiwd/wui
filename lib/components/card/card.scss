@@ -13,18 +13,28 @@
   }
   &-header {
     color: $title-color;
-    font-size: 16px;
+    font-size: $font-lg;
     padding: $space-lg $space-xxl;
-    &.wui-card-extra {
+    &.wui-card-extra &-info {
       display: flex;
       align-items: center;
       justify-content: space-between;
     }
+    &-meta {
+      font-size: $font-md;
+      color: lighten($text-color, 30%);
+    }
   }
   &-main {
+    padding: $space-xxl;
     &.wui-card-title {
       border-top: 1px solid $border-color;
     }
-    padding: $space-xxl;
+  }
+  &-hasMeta &-main {
+    border-top: none;
+  }
+  &-hasMeta &-header {
+    padding-bottom: 0;
   }
 }
