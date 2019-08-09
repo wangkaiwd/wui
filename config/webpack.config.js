@@ -27,7 +27,14 @@ module.exports = (env) => {
           // ? : 匹配前面一个表达式0次或者1次。这里可以匹配到.ts或者.tsx文件
           // $ : 匹配输入的结束
           test: /\.tsx?$/,
-          loader: 'awesome-typescript-loader'
+          loader: 'awesome-typescript-loader',
+          options: {
+            useCache: true,
+            cacheDirectory: 'node_modules/.cache/ts-loader',
+            reportFiles: [
+              'lib/**/*.{ts,tsx}'
+            ]
+          }
         },
         {
           test: /\.svg$/,
