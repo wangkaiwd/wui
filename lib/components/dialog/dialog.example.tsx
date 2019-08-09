@@ -1,15 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Dialog from './dialog';
 import Button from '@/components/button/button';
+import CodeItem from '@/doc/template/codeItem';
+import DialogExample1 from '@/components/dialog/dialog.example.1';
 
 const DialogExample = () => {
-  const [visible, setVisible] = useState(false);
-  const onOk = () => {
-    setVisible(true);
-  };
-  const onCancel = () => {
-    setVisible(false);
-  };
   const onClickAlert = () => {
     Dialog.alert({
       title: 'Alert',
@@ -37,20 +32,9 @@ const DialogExample = () => {
   };
   return (
     <div>
-      <h2>demo1</h2>
-      <Button onClick={() => setVisible(true)}>click</Button>
-      <Dialog
-        visible={visible}
-        onOk={onOk}
-        onCancel={onCancel}
-        title={'Delete Your Account'}
-        buttons={[
-          <Button color={'danger'} onClick={onCancel}>No</Button>,
-          <Button color={'primary'} onClick={onCancel}>Yes</Button>
-        ]}
-      >
-        Are you sure you want to delete your account
-      </Dialog>
+      <CodeItem title="基础用法" meta="最常用的模态框组件" code={require('!!raw-loader!./dialog.example.1').default}>
+        <DialogExample1/>
+      </CodeItem>
       <h2>demo2</h2>
       <Button onClick={onClickAlert}>click2</Button>
 

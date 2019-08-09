@@ -7,17 +7,18 @@ import Card from '../../components/card/card';
 const sc = classMaker('code-item');
 
 interface Props {
-  code: string,
-  title?: string
+  code: string;
+  title?: string;
+  meta?: string;
 }
 
 const CodeItem: React.FC<Props> = (props) => {
   return (
     <div className={sc()}>
-      <Card border={false} title={props.title} className={sc('body')}>
+      <Card border={false} title={props.title} meta={props.meta} hoverable>
         {props.children}
       </Card>
-      <Card className={sc('code')} title={'代码演示'} border={false}>
+      <Card hoverable className={sc('code')} title={'代码演示'} border={false}>
         <Highlight {...defaultProps} theme={undefined} code={props.code} language="jsx">
           {({ className, style, tokens, getLineProps, getTokenProps }) => (
             <pre className={className} style={style}>
