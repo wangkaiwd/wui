@@ -12,7 +12,7 @@ const DialogExample1 = () => {
   };
   return (
     <Fragment>
-      <Button color="primary" onClick={() => setVisible(true)}>open modal</Button>
+      <Button color="primary" onClick={() => setVisible(true)}>open dialog</Button>
       <Dialog
         visible={visible}
         onOk={onOk}

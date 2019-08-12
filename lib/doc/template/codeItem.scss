@@ -7,7 +7,7 @@
     }
   }
   .wui-code-item-code {
-    margin: 24px 0;
+    margin-bottom: 24px;
     .wui-card-main {
       padding: 0;
     }
@@ -16,6 +16,7 @@
     }
   }
   .prism-code.language-jsx {
+
     padding: 24px 16px;
     border-radius: 6px;
     font-size: 13px;
@@ -69,7 +70,6 @@ code[class*="language-"]::selection, code[class*="language-"] ::selection {
 /* Code blocks */
 pre[class*="language-"] {
   padding: 1em;
-  margin: .5em 0;
   overflow: auto;
 }
 

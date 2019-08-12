@@ -3,6 +3,7 @@ import Highlight, { defaultProps } from 'prism-react-renderer';
 import { classMaker } from '../../helpers/classes';
 import './codeItem.scss';
 import Card from '../../components/card/card';
+import Icon from '@/components/icon/icon';
 
 const sc = classMaker('code-item');
 
@@ -13,12 +14,18 @@ interface Props {
 }
 
 const CodeItem: React.FC<Props> = (props) => {
+  const extra = <Icon name={'try'}/>;
   return (
     <div className={sc()}>
-      <Card border={false} title={props.title} meta={props.meta} hoverable>
+      <Card
+        border={false}
+        title={props.title}
+        meta={props.meta}
+        hoverable
+      >
         {props.children}
       </Card>
-      <Card hoverable className={sc('code')} title={'代码演示'} border={false}>
+      <Card hoverable className={sc('code')} border={false} extra={extra}>
         <Highlight {...defaultProps} theme={undefined} code={props.code} language="jsx">
           {({ className, style, tokens, getLineProps, getTokenProps }) => (
             <pre className={className} style={style}>
