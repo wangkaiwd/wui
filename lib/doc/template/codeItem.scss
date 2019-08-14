@@ -6,13 +6,24 @@
       margin: $space-md;
     }
   }
+  &-try {
+    font-size: 28px;
+    cursor: pointer;
+    color: rgb(118, 118, 118);
+  }
   .wui-code-item-code {
+    max-height: 0;
     margin-bottom: 24px;
+    transition: all 0.4s;
+    overflow: hidden;
     .wui-card-main {
       padding: 0;
     }
     .wui-card-main.wui-card-title {
       border: none;
+    }
+    &.wui-code-item-collapse {
+      max-height: 1000px;
     }
   }
   .prism-code.language-jsx {

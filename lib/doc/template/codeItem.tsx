@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Highlight, { defaultProps } from 'prism-react-renderer';
 import { classMaker } from '../../helpers/classes';
 import './codeItem.scss';
@@ -14,18 +14,23 @@ interface Props {
 }
 
 const CodeItem: React.FC<Props> = (props) => {
-  const extra = <Icon name={'try'}/>;
+  const [collapse, setCollapse] = useState(false);
+  const onClickTry = () => {
+    setCollapse(!collapse);
+  };
+  const extra = <Icon onClick={onClickTry} className={sc('try')} name={'try'}/>;
   return (
     <div className={sc()}>
       <Card
         border={false}
         title={props.title}
         meta={props.meta}
+        extra={extra}
         hoverable
       >
         {props.children}
       </Card>
-      <Card hoverable className={sc('code')} border={false} extra={extra}>
+      <Card hoverable className={sc('code', { collapse })} border={false}>
         <Highlight {...defaultProps} theme={undefined} code={props.code} language="jsx">
           {({ className, style, tokens, getLineProps, getTokenProps }) => (
             <pre className={className} style={style}>

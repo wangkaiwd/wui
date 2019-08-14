@@ -1,31 +1,12 @@
 import React from 'react';
-import Dialog from './dialog';
-import Button from '@/components/button/button';
 import CodeItem from '@/doc/template/codeItem';
 import DialogExample1 from '@/components/dialog/dialog.example.1';
 import DialogExample2 from '@/components/dialog/dialog.example.2';
+import DialogExample4 from '@/components/dialog/dialog.example.4';
+import DialogExample3 from '@/components/dialog/dialog.example.3';
 
 const DialogExample = () => {
 
-  const onClickConfirm = () => {
-    Dialog.confirm({
-      title: 'Confirm',
-      content: 'ConfirmContent'
-    });
-  };
-  const onClickModal = () => {
-    const content = (
-      <div>
-        <p>I am content</p>
-        <Button onClick={() => closeModal()}>取消</Button>
-      </div>
-    );
-
-    const closeModal = Dialog.modal({
-      title: 'Modal',
-      content
-    });
-  };
   return (
     <div>
       <CodeItem title="基础用法" meta="通过组件形式调用"
@@ -39,12 +20,20 @@ const DialogExample = () => {
       >
         <DialogExample2/>
       </CodeItem>
-
-      <h2>demo3</h2>
-      <Button onClick={onClickConfirm}>click3</Button>
-
-      <h2>demo4</h2>
-      <Button onClick={onClickModal}>click4</Button>
+      <CodeItem
+        title="Alert"
+        meta="提示信息"
+        code={require('!!raw-loader!@/components/dialog/dialog.example.3').default}
+      >
+        <DialogExample3/>
+      </CodeItem>
+      <CodeItem
+        title="Confirm"
+        meta="确认信息"
+        code={require('!!raw-loader!@/components/dialog/dialog.example.4').default}
+      >
+        <DialogExample4/>
+      </CodeItem>
     </div>
   );
 };
