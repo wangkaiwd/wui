@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import Button from '@/components/button/button';
 import Dialog from '@/components/dialog/dialog';
 
@@ -17,9 +17,7 @@ const DialogExample2 = () => {
     });
   };
   return (
-    <Fragment>
-      <Button onClick={onClickModal} color={'primary'}>open modal</Button>
-    </Fragment>
+    <Button onClick={onClickModal} color={'primary'}>open modal</Button>
   );
 };
 

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import CodeItem from '@/doc/template/codeItem';
 import DialogExample1 from '@/components/dialog/dialog.example.1';
 import DialogExample2 from '@/components/dialog/dialog.example.2';
@@ -8,7 +8,7 @@ import DialogExample3 from '@/components/dialog/dialog.example.3';
 const DialogExample = () => {
 
   return (
-    <div>
+    <Fragment>
       <CodeItem title="基础用法" meta="通过组件形式调用"
                 code={require('!!raw-loader!@/components/dialog/dialog.example.1').default}>
         <DialogExample1/>
@@ -34,7 +34,7 @@ const DialogExample = () => {
       >
         <DialogExample4/>
       </CodeItem>
-    </div>
+    </Fragment>
   );
 };
 
