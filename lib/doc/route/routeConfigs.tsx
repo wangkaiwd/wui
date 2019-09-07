@@ -4,7 +4,8 @@ import React from 'react';
 interface RouteConfig {
   path: string;
   component: React.FunctionComponent,
-  name: string
+  name: string;
+  exact?: boolean;
 }
 
 const lazyComponent = (dir: string) => lazy(() => import(`../../components/${dir}`));
