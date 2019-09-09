@@ -41,7 +41,7 @@ export const classMaker = (prefix?: string) => (...names: Array<string | undefin
     }, [])
     .join(' ');
   if (names[0] === '' || typeof names[0] === 'undefined') {
-    return [fullPrefix, resultNames].join(' ');
+    return classes(fullPrefix, resultNames);
   }
   return resultNames;
 };
