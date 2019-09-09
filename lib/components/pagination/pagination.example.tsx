@@ -4,8 +4,8 @@ import Card from '@/components/card/card';
 
 const PaginationExample: React.FunctionComponent = (props) => {
   return (
-    <Card>
-      <Pagination/>
+    <Card title={'分页'}>
+      <Pagination total={100} pageSize={10}/>
     </Card>
   );
 };
