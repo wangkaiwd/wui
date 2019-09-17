@@ -1,57 +1,71 @@
-import React, { useState } from 'react';
+import React from 'react';
 import classes, { classMaker } from '@/helpers/classes';
+import './pagination.scss';
 
 interface Props extends React.HTMLAttributes<HTMLDivElement> {
   total: number;
-  // current?: number;
+  current: number;
   pageSize: number;
-  // onPageChange: (page: number, pageSize: number) => void
+  onPageChange: (page: number, pageSize: number) => void
 }
 
-const current = 0;
+type PageItem = number | '...'
+
 const sc = classMaker('pagination');
 const Pagination: React.FC<Props> = (props) => {
   const {
     className,
     pageSize,
     total,
+    current,
+    onPageChange,
     ...restProps
   } = props;
-  const [buttons, setButtons] = useState([]);
-  const caculateList = () => {
-    let result: string | number[] = Array.apply(null, { length: 10 }).map((item: undefined, i: number) => i);
+  const calculateList = () => {
     const pageCount = Math.ceil(total / pageSize);
-    if (pageCount <= 10) {
-      result = Array.apply(null, { length: pageCount }).map((item: undefined, i: number) => i);
-    } else if (current >= 4) {
-
-    }
+    let result: PageItem[] = [1, current - 2, current - 1, current, current + 1, current + 2, pageCount];
+    return result
+      .sort((a: number, b: number) => a - b)
+      .filter((item, i, array) => array.indexOf(item) === i)
+      .filter(item => (item >= 1 && item <= pageCount))
+      .reduce((count: PageItem[], item: number, i: number, array) => {
+        if (array[i + 1] && item + 1 !== array[i + 1]) {
+          count.push(item, '...');
+        } else {
+          count.push(item);
+        }
+        return count;
+      }, []);
   };
   return (
     <div
       className={classes(sc(), className)}
       {...restProps}
     >
-      pagination
+      <ul className={sc('item-wrapper')}>
+        {calculateList().map((button: PageItem, i: number) => {
+            // 这里使用
+            if (button === '...') {
+              return <li
+                key={i}
+                className={sc('item', 'item-ellipsis')}
+              >
+                {button}
+              </li>;
+            } else {
+              return <li
+                key={i}
+                onClick={() => onPageChange(button, pageSize)}
+                className={sc('item', 'item-number', { 'item-active': button === current })}
+              >
+                {button}
+              </li>;
+            }
+          }
+        )}
+      </ul>
     </div>
   );
 };
 
 export default Pagination;
-/*
-*
-* 属性：
-* 1. 分页样式
-* 总条数<=10会正常展示
-*     a. 1 2 3 4 5 6 7
-* 总条数>=10 开始出现...
-*     b. 1 2 3 4 5 6 ... 50   1 2 3 4 5 ... 50
-*     c. 1 ... x-2 x-1 x x+1 x+2 ... 50
-* 2. total 总页数
-* 3. pageSize 每页条数
-* 4. current 当前页码
-*
-* 方法：
-* 1. onPageChange
-*
-* */
