@@ -24,6 +24,12 @@ const Pagination: React.FC<Props> = (props) => {
   const calculateList = () => {
     const pageCount = Math.ceil(total / pageSize);
     let result: PageItem[] = [1, current - 2, current - 1, current, current + 1, current + 2, pageCount];
+    if (current - 2 <= 1) {
+      result = [1, 2, 3, 4, 5, '...', pageCount];
+    }
+    if (current + 2 >= pageCount) {
+      result = [1, '...', pageCount - 4, pageCount - 3, pageCount - 2, pageCount - 1, pageCount];
+    }
     return result
       .sort((a: number, b: number) => a - b)
       .filter((item, i, array) => array.indexOf(item) === i)

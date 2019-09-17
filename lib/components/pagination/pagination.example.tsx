@@ -9,7 +9,7 @@ const PaginationExample: React.FunctionComponent = (props) => {
       <Pagination onPageChange={(page, pageSize) => {
         console.log('pageChange', page, pageSize);
         setCurrent(page);
-      }} current={current} total={100} pageSize={10}/>
+      }} current={current} total={70} pageSize={10}/>
     </Card>
   );
 };
