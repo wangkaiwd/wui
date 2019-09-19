@@ -6,10 +6,19 @@ const PaginationExample: React.FunctionComponent = (props) => {
   const [current, setCurrent] = useState(1);
   return (
     <Card title={'分页'}>
-      <Pagination onPageChange={(page, pageSize) => {
-        console.log('pageChange', page, pageSize);
-        setCurrent(page);
-      }} current={current} total={70} pageSize={10}/>
+      <Pagination
+        total={1000}
+        pageSize={10}
+      />
+      <Pagination
+        onPageChange={(page, pageSize) => {
+          console.log('pageChange', page, pageSize);
+          setCurrent(page);
+        }}
+        current={current}
+        total={1000}
+        pageSize={10}
+      />
     </Card>
   );
 };

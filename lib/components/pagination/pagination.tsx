@@ -1,12 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import classes, { classMaker } from '@/helpers/classes';
 import './pagination.scss';
 
 interface Props extends React.HTMLAttributes<HTMLDivElement> {
   total: number;
-  current: number;
-  pageSize: number;
-  onPageChange: (page: number, pageSize: number) => void
+  current?: number;
+  pageSize?: number;
+  onPageChange?: (page: number, pageSize: number) => void;
+  defaultCurrent?: number;
+  defaultPageSize?: number;
 }
 
 type PageItem = number | '...'
@@ -19,16 +21,28 @@ const Pagination: React.FC<Props> = (props) => {
     total,
     current,
     onPageChange,
+    defaultCurrent,
+    defaultPageSize,
     ...restProps
   } = props;
-  const calculateList = () => {
-    const pageCount = Math.ceil(total / pageSize);
-    let result: PageItem[] = [1, current - 2, current - 1, current, current + 1, current + 2, pageCount];
-    if (current - 2 <= 1) {
-      result = [1, 2, 3, 4, 5, '...', pageCount];
+  const [stateCurrent, setStateCurrent] = useState<number>(defaultCurrent!);
+  const handleDefaultValue = () => {
+    console.log('default');
+    return {
+      newCurrent: current || stateCurrent,
+      newPageSize: pageSize || defaultPageSize!
+    };
+  };
+  const calculateList = (): (number | '...')[] => {
+    const { newCurrent, newPageSize } = handleDefaultValue();
+    console.log('newCurrent', newCurrent);
+    const pageCount = Math.ceil(total / newPageSize);
+    let result: PageItem[] = [1, newCurrent - 2, newCurrent - 1, newCurrent, newCurrent + 1, newCurrent + 2, pageCount];
+    if (newCurrent - 2 <= 1) {
+      result = [1, 2, 3, 4, 5, pageCount];
     }
-    if (current + 2 >= pageCount) {
-      result = [1, '...', pageCount - 4, pageCount - 3, pageCount - 2, pageCount - 1, pageCount];
+    if (newCurrent + 2 >= pageCount) {
+      result = [1, pageCount - 4, pageCount - 3, pageCount - 2, pageCount - 1, pageCount];
     }
     return result
       .sort((a: number, b: number) => a - b)
@@ -42,6 +56,10 @@ const Pagination: React.FC<Props> = (props) => {
         }
         return count;
       }, []);
+  };
+  const onClickItemNumber = (button: number): void => {
+    if (!current) {setStateCurrent(button);}
+    onPageChange && onPageChange(button, handleDefaultValue().newPageSize);
   };
   return (
     <div
@@ -61,8 +79,8 @@ const Pagination: React.FC<Props> = (props) => {
             } else {
               return <li
                 key={i}
-                onClick={() => onPageChange(button, pageSize)}
-                className={sc('item', 'item-number', { 'item-active': button === current })}
+                onClick={() => onClickItemNumber(button)}
+                className={sc('item', 'item-number', { 'item-active': button === handleDefaultValue().newCurrent })}
               >
                 {button}
               </li>;
@@ -75,3 +93,7 @@ const Pagination: React.FC<Props> = (props) => {
 };
 
 export default Pagination;
+Pagination.defaultProps = {
+  defaultCurrent: 1,
+  defaultPageSize: 10
+};
