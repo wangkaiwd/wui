@@ -3,7 +3,7 @@ import Pagination from '@/components/pagination/pagination';
 import Card from '@/components/card/card';
 
 const PaginationExample: React.FunctionComponent = (props) => {
-  const [current, setCurrent] = useState(1);
+  const [current, setCurrent] = useState(2);
   return (
     <Card title={'分页'}>
       <Pagination
