@@ -1,0 +1,13 @@
+.wui-pagination-item-wrapper {
+  display: flex;
+  margin-left: -4px; }
+
+.wui-pagination-item {
+  padding: 4px;
+  border: 1px solid pink;
+  margin-left: 4px;
+  cursor: pointer; }
+
+.wui-pagination-item.wui-pagination-item-active {
+  background-color: skyblue; }
+
