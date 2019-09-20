@@ -7,7 +7,7 @@ import Icon from '@/components/icon/icon';
 
 const sc = classMaker('code-item');
 
-interface Props {
+interface Props extends React.HTMLAttributes<HTMLDivElement> {
   code: string;
   title?: string;
   meta?: string;

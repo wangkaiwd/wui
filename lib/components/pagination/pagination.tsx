@@ -31,7 +31,7 @@ const Pagination: React.FC<Props> = (props) => {
     ...restProps
   } = props;
   const [stateCurrent, setStateCurrent] = useState<number>(defaultCurrent!);
-  
+
   const defaultValues = useMemo<NewProps>(() => {
     return {
       newCurrent: current || stateCurrent,
@@ -57,6 +57,8 @@ const Pagination: React.FC<Props> = (props) => {
     return count;
   };
 
+  // useMemo: 参数1："创建"函数， 参数2：依赖项数组; 它仅会在某个依赖项改变时才重新计算memoized值。这种优化有助于避免在每次渲染时都进行高开销的计算
+  // 传入useMemo的函数会在渲染期间执行。请不要在这个函数内部执行与渲染无关的操作
   const pageItem = useMemo((): (number | '...')[] => {
     const { newCurrent, newPageSize } = defaultValues;
     const pageCount = Math.ceil(total / newPageSize);
