@@ -12,19 +12,25 @@ const ButtonExample: React.FC = () => {
         title={'基础使用'}
         code={require('!!raw-loader!./button.example.1').default}
       >
-        <ButtonExample1/>
+        <div style={{ margin: '0 -20px' }}>
+          <ButtonExample1/>
+        </div>
       </CodeItem>
       <CodeItem
         title={'添加图标'}
         code={require('!!raw-loader!./button.example.2').default}
       >
-        <ButtonExample2/>
+        <div style={{ margin: '0 -20px' }}>
+          <ButtonExample2/>
+        </div>
       </CodeItem>
       <CodeItem
         title={'外边框'}
         code={require('!!raw-loader!./button.example.3').default}
       >
-        <ButtonExample3/>
+        <div style={{ margin: '0 -20px' }}>
+          <ButtonExample3/>
+        </div>
       </CodeItem>
     </div>
   );
