@@ -32,7 +32,7 @@
   1. 在`jsx`中绑定时： `this.onClick.bind(this)`
   2. 提前在`constructor`中进行绑定： `this.onClick = this.onClick.bind(this)`
   3. 通过箭头函数定义函数：  
-      ```js
+      ```javascript
       onClick = () => {console.log(this)}
       // 相当于如下代码
       constructor() {
